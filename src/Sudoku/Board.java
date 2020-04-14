@@ -12,4 +12,8 @@ public class Board {
         boardRowAndColumns[row][column].setVelue(value);
     }
 
+    //private boolean isOkInLine(Block block){
+        //isOkInLine()
+    //}
+
 }
