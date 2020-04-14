@@ -11,6 +11,7 @@ public class PosibleMovementCalculator {
 
     Position startingPosition=new Position(0,0);
     Position currentPosition=startingPosition;
+    Position printPosition;
 
     private int movement1;
     private int movement2;
@@ -26,21 +27,30 @@ public class PosibleMovementCalculator {
     }
 
     public void printPosiblePaths(int n){
-       ArrayList<StackDynamic<Position>> stacksOfPositions = new ArrayList<>();
+       ArrayList<StackDynamic<Position>> arrayOfPositions = new ArrayList<>();
        StackDynamic<Position> positions;
 
-        for (int i = 0; i < n; i++) {
-            positions=posibleMovementsStack();
-            currentPosition=(Position) positions.peek().data;
-            stacksOfPositions.add(stacksOfPositions.size(),positions);
+        for (int i = 0; i < n-1; i++) {
+            positions = posibleMovementsStack();
+            currentPosition = (Position) positions.peek().data;
+            arrayOfPositions.add(arrayOfPositions.size(), positions);
         }
-        while(currentPosition.compareTo(startingPosition)!=0){
-            System.out.print(currentPosition.print());
+        currentPosition=(Position) arrayOfPositions.get(arrayOfPositions.size()-1).peek().data;
 
+        while(!arrayOfPositions.get(arrayOfPositions.size()-1).isEmpty()) {
+            arrayOfPositions.add(arrayOfPositions.size(),posibleMovementsStack());
+            while (!arrayOfPositions.get(arrayOfPositions.size() - 1).isEmpty()){
+                for (int i = 0; i < arrayOfPositions.size(); i++) {
+                    currentPosition = (Position) arrayOfPositions.get(i).peek().data;
+                    System.out.print(currentPosition.print() + " ");
+                }
+                System.out.println("");
+                arrayOfPositions.get(arrayOfPositions.size()-1).pop();
+            }
+            arrayOfPositions.remove(arrayOfPositions.size()-1);
+            arrayOfPositions.get(arrayOfPositions.size()-1).pop();
         }
-
-       positions=posibleMovementsStack();
-
+        printPosiblePaths(n-1);
     }
 
     private StackDynamic<Position> posibleMovementsStack() {

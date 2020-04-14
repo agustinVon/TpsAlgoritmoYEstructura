@@ -33,8 +33,8 @@ public class Position implements Comparable<Position> {
     }
 
     public boolean isPosible(int limitX,int limitY){
-        if(x<0||x>limitX) return false;
-        else if(y<0||y>limitY) return false;
+        if(x<0||x>=limitX) return false;
+        else if(y<0||y>=limitY) return false;
         else return true;
     }
 
