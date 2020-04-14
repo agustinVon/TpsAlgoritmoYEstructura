@@ -15,7 +15,6 @@ public class PosibleMovementCalculatorTest {
     public void whenCalculatingStackForPossibleMovementsShouldSucced(){
         PosibleMovementCalculator posibleMovementCalculator=new PosibleMovementCalculator(2,1);
         StackDynamic<Position> pos=posibleMovementCalculator.returnPosibleMovements();
-        System.out.println(pos.size());
         for (int i = pos.size(); i >0; i--) {
             Position daleviejaa=(Position)(pos.peek().data);
             System.out.println(daleviejaa.print());

@@ -1,6 +1,6 @@
 package ChessHorse;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     private int x;
     private int y;
@@ -8,6 +8,12 @@ public class Position {
     Position(int x,int y){
         this.x=x;
         this.y=y;
+    }
+
+    @Override
+    public int compareTo(Position positionToCompare) {
+        if(positionToCompare.getX()==x &&positionToCompare.getY()==y) return 0;
+        else return -1;
     }
 
     public int getX() {
@@ -34,6 +40,7 @@ public class Position {
 
     public String print(){
         char xChar= (char) (x+65);
-        return xChar+" "+y+1;
+        int n=y+1;
+        return ""+xChar+n;
     }
 }
