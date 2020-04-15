@@ -9,9 +9,7 @@ public class PosibleMovementCalculator {
     private int lines=8;
     private int columns=8;
 
-    Position startingPosition=new Position(0,0);
-    Position currentPosition=startingPosition;
-    Position printPosition;
+    Position startingPosition=new Position(0,1);
 
     private int movement1;
     private int movement2;
@@ -23,26 +21,40 @@ public class PosibleMovementCalculator {
     }
 
     public StackDynamic<Position> returnPosibleMovements(){
-        return posibleMovementsStack();
+        return posibleMovementsStack(startingPosition);
     }
 
-    public void printPosiblePaths(int n){
+    public void reBuildStacks(ArrayList<StackDynamic<Position>> arrayList){
+        ArrayList<StackDynamic<Position>> arrayOfPositions = new ArrayList<>();
+        StackDynamic<Position> positions;
+        ArrayList<Position> positionsToPrint;
+        Position auxPositionMarker;
+
+
+        for (int i = 0; i < arrayList.size()-1; i++) {
+            if(arrayList.get(i+1).isEmpty()){
+                arrayList.set(i+1)
+            }
+        }
+
+        /*
        ArrayList<StackDynamic<Position>> arrayOfPositions = new ArrayList<>();
        StackDynamic<Position> positions;
 
+       Position auxPositionMarker=startingPosition;
         for (int i = 0; i < n-1; i++) {
-            positions = posibleMovementsStack();
-            currentPosition = (Position) positions.peek().data;
+            positions = posibleMovementsStack(auxPositionMarker);
+            auxPositionMarker = (Position) positions.peek().data;
             arrayOfPositions.add(arrayOfPositions.size(), positions);
         }
-        currentPosition=(Position) arrayOfPositions.get(arrayOfPositions.size()-1).peek().data;
+        auxPositionMarker=(Position) arrayOfPositions.get(arrayOfPositions.size()-1).peek().data;
 
         while(!arrayOfPositions.get(arrayOfPositions.size()-1).isEmpty()) {
-            arrayOfPositions.add(arrayOfPositions.size(),posibleMovementsStack());
+            arrayOfPositions.add(arrayOfPositions.size(),posibleMovementsStack(auxPositionMarker));
             while (!arrayOfPositions.get(arrayOfPositions.size() - 1).isEmpty()){
                 for (int i = 0; i < arrayOfPositions.size(); i++) {
-                    currentPosition = (Position) arrayOfPositions.get(i).peek().data;
-                    System.out.print(currentPosition.print() + " ");
+                    auxPositionMarker = (Position) arrayOfPositions.get(i).peek().data;
+                    System.out.print(auxPositionMarker.print() + " ");
                 }
                 System.out.println("");
                 arrayOfPositions.get(arrayOfPositions.size()-1).pop();
@@ -51,11 +63,15 @@ public class PosibleMovementCalculator {
             arrayOfPositions.get(arrayOfPositions.size()-1).pop();
         }
         printPosiblePaths(n-1);
+
+         */
     }
 
-    private StackDynamic<Position> posibleMovementsStack() {
+
+
+    private StackDynamic<Position> posibleMovementsStack(Position positionToEvaluate) {
         StackDynamic<Position> positionStack = new StackDynamic<>();
-        Position testPosition = new Position(currentPosition.getX(),currentPosition.getY());
+        Position testPosition = new Position(positionToEvaluate.getX(),positionToEvaluate.getY());
 
         for (int i = 0; i < 4; i++) {
             int x = 0;
@@ -92,7 +108,7 @@ public class PosibleMovementCalculator {
                     positionStack.push(new DynamicNode<>(testPosition));
 
                 }
-                testPosition = new Position(currentPosition.getX(),currentPosition.getY());
+                testPosition = new Position(positionToEvaluate.getX(),positionToEvaluate.getY());
             }
             for (int j = 0; j < 2&& j < 2 && (x==movement2 || x==-movement2); j++) {
                 int y = 0;
@@ -109,7 +125,7 @@ public class PosibleMovementCalculator {
                 testPosition.setX(testPosition.getX() + x);
                 testPosition.setY(testPosition.getY() + y);
                 if (testPosition.isPosible(lines, columns)) positionStack.push(new DynamicNode<>(testPosition));
-                testPosition = new Position(currentPosition.getX(),currentPosition.getY());
+                testPosition = new Position(positionToEvaluate.getX(),positionToEvaluate.getY());
             }
         }
         return positionStack;

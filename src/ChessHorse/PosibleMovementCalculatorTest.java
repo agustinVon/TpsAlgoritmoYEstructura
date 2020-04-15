@@ -17,5 +17,16 @@ public class PosibleMovementCalculatorTest {
         posibleMovementCalculator.printPosiblePaths(4);
 
     }
+    @Test
+    public void aa(){
+        PosibleMovementCalculator posibleMovementCalculator=new PosibleMovementCalculator(2,1);
+        StackDynamic<Position> movements=posibleMovementCalculator.returnPosibleMovements();
+        while(!movements.isEmpty()){
+            Position position=(Position) movements.peek().data;
+            System.out.println(position.print());
+            movements.pop();
+        }
+
+    }
 
 }
