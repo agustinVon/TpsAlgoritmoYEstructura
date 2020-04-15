@@ -32,12 +32,24 @@ public class Position implements Comparable<Position> {
         this.y = y;
     }
 
+    /**
+     * Evaluates if position can exist giving max limits and minimum 0
+     *
+     * @param limitX limit on the x axis
+     * @param limitY limit on the y axis
+     * @return if position is possible
+     */
     public boolean isPosible(int limitX,int limitY){
         if(x<0||x>=limitX) return false;
         else if(y<0||y>=limitY) return false;
         else return true;
     }
 
+    /**
+     * Transforms positions to expected Sting
+     *
+     * @return Position expressed in String
+     */
     public String print(){
         char xChar= (char) (x+65);
         int n=y+1;
