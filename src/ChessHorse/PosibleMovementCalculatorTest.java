@@ -14,7 +14,7 @@ public class PosibleMovementCalculatorTest {
     @Test
     public void whenCalculatingStackForPossibleMovementsShouldSucced(){
         PosibleMovementCalculator posibleMovementCalculator=new PosibleMovementCalculator(2,1);
-        posibleMovementCalculator.printPosiblePaths(4);
+        posibleMovementCalculator.printPosiblePaths(5);
 
     }
     @Test

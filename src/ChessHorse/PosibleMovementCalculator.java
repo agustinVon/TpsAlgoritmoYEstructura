@@ -35,24 +35,29 @@ public class PosibleMovementCalculator {
             arrayOfPositions.add(arrayOfPositions.size(), positions);
         }
 
-        while (!arrayOfPositions.get(0).isEmpty()){
+        while (reBuildStacks(arrayOfPositions)){
             for (int i = 0; i < arrayOfPositions.size(); i++) {
                 auxPositionMarker = (Position) arrayOfPositions.get(i).peek().data;
                 System.out.print(auxPositionMarker.print() + " ");
             }
+            System.out.println("");
+            arrayOfPositions.get(arrayOfPositions.size()-1).pop();
         }
     }
 
-    private void reBuildStacks(ArrayList<StackDynamic<Position>> arrayList){
+    private boolean reBuildStacks(ArrayList<StackDynamic<Position>> arrayList){
         for (int i = 0; i < arrayList.size()-1; i++) {
-            if(arrayList.get(0).isEmpty()){
-                return;
-            }
-            else if(arrayList.get(i+1).isEmpty()){
-                Position positionStored=(Position) arrayList.get(i).peek().data;
-                arrayList.set(i+1,posibleMovementsStack(positionStored));
+            if(arrayList.get(i+1)!=null){
+                if(arrayList.get(i+1).isEmpty()){
+                    arrayList.get(i).pop();
+                    if(arrayList.get(i).isEmpty()) return false;
+                    Position positionStored=(Position) arrayList.get(i).peek().data;
+                    arrayList.set(i+1,posibleMovementsStack(positionStored));
+                    return reBuildStacks(arrayList);
+                }
             }
         }
+        return true;
 
         /*
        ArrayList<StackDynamic<Position>> arrayOfPositions = new ArrayList<>();
