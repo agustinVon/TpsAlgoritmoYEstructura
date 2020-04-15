@@ -9,7 +9,7 @@ public class PosibleMovementCalculator {
     private int lines=8;
     private int columns=8;
 
-    Position startingPosition=new Position(0,1);
+    Position startingPosition=new Position(0,0);
 
     private int movement1;
     private int movement2;
@@ -29,7 +29,7 @@ public class PosibleMovementCalculator {
         StackDynamic<Position> positions;
 
         Position auxPositionMarker=startingPosition;
-        for (int i = 0; i < n-1; i++) {
+        for (int i = 0; i < n; i++) {
             positions = posibleMovementsStack(auxPositionMarker);
             auxPositionMarker = (Position) positions.peek().data;
             arrayOfPositions.add(arrayOfPositions.size(), positions);
@@ -47,10 +47,13 @@ public class PosibleMovementCalculator {
 
     private boolean reBuildStacks(ArrayList<StackDynamic<Position>> arrayList){
         for (int i = 0; i < arrayList.size()-1; i++) {
-            if(arrayList.get(i+1)!=null){
+            if(arrayList.get(0).isEmpty()){
+                return false;
+            }
+            else if(arrayList.get(i+1)!=null){
                 if(arrayList.get(i+1).isEmpty()){
                     arrayList.get(i).pop();
-                    if(arrayList.get(i).isEmpty()) return false;
+                    if(arrayList.get(i).isEmpty()) return reBuildStacks(arrayList);
                     Position positionStored=(Position) arrayList.get(i).peek().data;
                     arrayList.set(i+1,posibleMovementsStack(positionStored));
                     return reBuildStacks(arrayList);
