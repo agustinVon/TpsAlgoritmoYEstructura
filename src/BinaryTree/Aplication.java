@@ -6,14 +6,14 @@ public class Aplication<T> {
 
     }
 
-    public int getSize(BinaryTree binaryTree){
+    public int getSize(BinaryTree<T> binaryTree){
         if(binaryTree.isEmpty()){
             return 0;
         }
         return 1 + getSize(binaryTree.getRight()) + getSize(binaryTree.getLeft());
     }
 
-    public int getCompleteNodes(BinaryTree binaryTree){
+    public int getCompleteNodes(BinaryTree<T> binaryTree){
         if(binaryTree.isEmpty() || (binaryTree.getLeft().isEmpty() && binaryTree.getRight().isEmpty())){
             return 0;
         }
@@ -26,7 +26,7 @@ public class Aplication<T> {
         return 1 + getCompleteNodes(binaryTree.getRight()) + getCompleteNodes(binaryTree.getLeft());
     }
 
-    public int find(BinaryTree binaryTree, T element){
+    public int find(BinaryTree<T> binaryTree, T element){
         if(binaryTree.isEmpty()){
             return 0;
         }
@@ -36,11 +36,11 @@ public class Aplication<T> {
         return find(binaryTree.getRight(), element) + find(binaryTree.getLeft(), element);
     }
 
-    public int elementsAt(BinaryTree binaryTree, int level){
+    public int elementsAt(BinaryTree<T> binaryTree, int level){
         return 0;
     }
 
-    public int height(BinaryTree binaryTree){
+    public int height(BinaryTree<T> binaryTree){
         if(binaryTree.isEmpty()){
             return 0;
         }
@@ -61,5 +61,9 @@ public class Aplication<T> {
         } else {
             return heightRight + 1;
         }
+    }
+
+    public int sumOfElements(BinaryTree<Integer> binaryTree){
+        return 0
     }
 }
