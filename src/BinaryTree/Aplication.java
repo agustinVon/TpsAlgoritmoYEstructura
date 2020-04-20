@@ -73,6 +73,6 @@ public class Aplication<T> {
     }
 
     public int sumOfElements(BinaryTree<Integer> binaryTree){
-        return 0
+        return 0;
     }
 }
