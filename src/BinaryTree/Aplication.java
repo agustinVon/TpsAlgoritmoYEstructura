@@ -73,6 +73,19 @@ public class Aplication<T> {
     }
 
     public int sumOfElements(BinaryTree<Integer> binaryTree){
-        return 0;
+        if(binaryTree.isEmpty()) return 0;
+        else return 1+sumOfElements(binaryTree.getRight())+sumOfElements(binaryTree.getLeft());
+    }
+
+    public int sumOfElementsMultOf3(BinaryTree<Integer> binaryTree){
+        if(binaryTree.isEmpty()) return 0;
+        else if(binaryTree.getRoot()%3==0) return 1+sumOfElementsMultOf3(binaryTree.getRight())+sumOfElementsMultOf3(binaryTree.getLeft());
+        else return sumOfElementsMultOf3(binaryTree.getRight())+sumOfElementsMultOf3(binaryTree.getLeft());
+
+    }
+
+    public boolean equals(BinaryTree<T> binaryTree1,BinaryTree<T> binaryTree2){
+        return false;
+        //if(binaryTree1.isEmpty())
     }
 }
