@@ -37,7 +37,16 @@ public class Aplication<T> {
     }
 
     public int elementsAt(BinaryTree<T> binaryTree, int level){
-        return 0;
+        return elementsAtAuxMethod(binaryTree,level,0);
+    }
+
+    public int elementsAtAuxMethod(BinaryTree<T> binaryTree, int level,int currentLevel){
+        if(binaryTree.isEmpty()){
+            return 0;
+        }
+        else if(level==currentLevel) return 1;
+        else return elementsAtAuxMethod(binaryTree.getLeft(),level,currentLevel++)
+                    +elementsAtAuxMethod(binaryTree.getRight(),level,currentLevel++);
     }
 
     public int height(BinaryTree<T> binaryTree){
