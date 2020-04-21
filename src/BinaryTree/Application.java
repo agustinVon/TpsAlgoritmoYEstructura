@@ -3,6 +3,9 @@ package BinaryTree;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 public class Application<T extends Comparable<T>> {
 
     private ArrayList<T> arrayAuxiliarFronter = new ArrayList<>();
@@ -236,4 +239,27 @@ public class Application<T extends Comparable<T>> {
             printByLevel(root.right, level - 1);
         }
     }
+
+    boolean checkAVL(BinaryTree<T> tree){
+        if(tree.isEmpty()){
+            return true;
+        }else if(!tree.getLeft().isEmpty() && !tree.getRight().isEmpty()){
+            int maximus = max(height(tree.getLeft()),height(tree.getRight()));
+            int min = min(height(tree.getLeft()),height(tree.getRight()));
+
+            if((maximus-min) <= 1){
+                return checkAVL(tree.getLeft()) && checkAVL(tree.getRight());
+            }else {
+                return false;
+            }
+        }else if(!tree.getRight().isEmpty()){
+            return checkAVL(tree.getRight());
+        }else if(!tree.getLeft().isEmpty()){
+            return checkAVL(tree.getLeft());
+        }else{
+            return false;
+        }
+    }
+
+
 }

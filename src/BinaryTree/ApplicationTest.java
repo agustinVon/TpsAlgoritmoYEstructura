@@ -185,4 +185,43 @@ public class ApplicationTest {
 
     }
 
+    @Test
+    public void whenCalculatingTreeIsAVLFailed(){
+/*
+        OtherBinaryTree<Integer> integerBinaryTreeRRR=new OtherBinaryTree<Integer>(15,
+                new OtherBinaryTree<Integer>(14),
+                null);
+        OtherBinaryTree<Integer> integerBinaryTreeRR=new OtherBinaryTree<Integer>(7,
+                null,
+                integerBinaryTreeRRR);
+        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(6,
+                new OtherBinaryTree<Integer>(5),
+                integerBinaryTreeRR);
+        OtherBinaryTree<Integer> integerBinaryTreeL=new OtherBinaryTree<Integer>(2,
+                new OtherBinaryTree<Integer>(1),
+                new OtherBinaryTree<Integer>(3));
+
+        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
+                integerBinaryTreeL,
+                integerBinaryTreeR);
+
+
+ */
+
+        OtherBinaryTree<Integer> integerBinaryTreeRR=new OtherBinaryTree<Integer>(8);
+        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(6,
+                new OtherBinaryTree<Integer>(null),
+                integerBinaryTreeRR);
+
+        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
+                new OtherBinaryTree<Integer>(null),
+                integerBinaryTreeR);
+        Application<Integer> application =new Application<Integer>();
+
+        Assert.assertFalse(application.checkAVL(integerBinaryTree));
+
+    }
+
+
+
 }
