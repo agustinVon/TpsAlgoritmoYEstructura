@@ -1,8 +1,11 @@
 package BinaryTree;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Aplication<T extends Comparable<T>> {
+
+    private ArrayList<T> arrayAuxiliarFronter = new ArrayList<>();
 
     public Aplication(){
 
@@ -138,4 +141,42 @@ public class Aplication<T extends Comparable<T>> {
             else return isStable(tree.getLeft())&&isStable(tree.getRight());
         }
     }
+
+    boolean aTreeIsInsideAnotherTree(BinaryTree<T> treeGod, BinaryTree<T> treeHuman){
+        if(treeGod.isEmpty() && treeHuman.isEmpty()){
+            return true;
+        }
+        else if(treeGod.getRoot().compareTo(treeHuman.getRoot()) == 0){
+            return equals(treeGod, treeHuman);
+        }else if(!treeGod.getRight().isEmpty() || !treeGod.getLeft().isEmpty()){
+            return aTreeIsInsideAnotherTree(treeGod.getLeft(),treeHuman.getLeft()) || aTreeIsInsideAnotherTree(treeGod.getRight(),treeHuman.getRight());
+        }
+        return false;
+    }
+
+    void showBorder(BinaryTree<T> tree){
+        getBorderTree(tree);
+
+        for (T t:arrayAuxiliarFronter) {
+            System.out.println(t);
+        }
+
+    }
+
+    ArrayList<T> getBorderTree(BinaryTree<T> tree){
+        if(tree.isEmpty()){
+            System.out.println("");
+        }
+        else if(tree.getLeft().isEmpty() && tree.getRight().isEmpty()){
+            arrayAuxiliarFronter.add(tree.getRoot());
+        }else{
+            getBorderTree(tree.getLeft());
+            getBorderTree(tree.getRight());
+        }
+
+        return arrayAuxiliarFronter;
+    }
+
+
+
 }

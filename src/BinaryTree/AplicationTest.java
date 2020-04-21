@@ -3,8 +3,6 @@ package BinaryTree;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class AplicationTest {
 
     @Test
@@ -96,6 +94,51 @@ public class AplicationTest {
         Aplication<Integer> aplication=new Aplication<Integer>();
 
         Assert.assertFalse(aplication.isStable(integerBinaryTree));
+    }
+
+    @Test
+    public void whenCalculatingIfTreeIsInsideOfAnotherTreeShouldSucced(){
+       //HACELO MAU
+    }
+
+    @Test
+    public void whenCalculatingIfTreeIsInsideOfAnotherTreeShouldFail(){
+        //HACELO MAU x2
+    }
+
+    @Test
+    public void whenCalculatingTreeBorder(){
+        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(8,
+                new OtherBinaryTree<Integer>(2),
+                new OtherBinaryTree<Integer>(3));
+        OtherBinaryTree<Integer> integerBinaryTreeL=new OtherBinaryTree<Integer>(8,
+                new OtherBinaryTree<Integer>(4),
+                new OtherBinaryTree<Integer>(5));
+
+        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
+                integerBinaryTreeL,
+                integerBinaryTreeR);
+        Aplication<Integer> aplication=new Aplication<Integer>();
+        aplication.showBorder(integerBinaryTree);
+
+    }
+
+    @Test
+    public void whenCalculatingTreeBorderArray(){
+        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(8,
+                new OtherBinaryTree<Integer>(2),
+                new OtherBinaryTree<Integer>(3));
+        OtherBinaryTree<Integer> integerBinaryTreeL=new OtherBinaryTree<Integer>(8,
+                new OtherBinaryTree<Integer>(4),
+                new OtherBinaryTree<Integer>(5));
+
+        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
+                integerBinaryTreeL,
+                integerBinaryTreeR);
+        Aplication<Integer> aplication=new Aplication<Integer>();
+
+        Assert.assertEquals(4,aplication.getBorderTree(integerBinaryTree).size());
+
     }
 
 
