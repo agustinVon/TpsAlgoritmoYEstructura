@@ -112,19 +112,21 @@ public class Aplication<T> {
         else return isComplete(tree.getRight()) && isComplete(tree.getLeft());
     }
 
-    /*
     boolean isFull(BinaryTree<T> tree){
-        return isFullAuziliarMethod(tree,0,height(tree));
+        return isFullAuxiliarMethod(tree,1,height(tree));
     }
 
-    boolean isFullAuziliarMethod(BinaryTree<T> tree,int n,int height){
+    boolean isFullAuxiliarMethod(BinaryTree<T> tree,int n,int height){
         if(tree.isEmpty()) return false;
         else if(!tree.getRight().isEmpty() && !tree.getLeft().isEmpty()){
             if(n==height) return true;
-            else return isFullAuziliarMethod(tree.getLeft(),n+1,height)&&isFullAuziliarMethod(tree.getRight(),n+1,height);
+            else{
+                int p=n+1;
+                return isFullAuxiliarMethod(tree.getLeft(),p,height)&&isFullAuxiliarMethod(tree.getRight(),p,height);
+            }
         }
         else return false;
     }
 
-     */ //no funca esto
+
 }

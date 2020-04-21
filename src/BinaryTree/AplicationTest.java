@@ -73,7 +73,7 @@ public class AplicationTest {
 
         Aplication<Integer> aplication=new Aplication<Integer>();
 
-        Assert.assertEquals(2,aplication.height(integerBinaryTree),0);
+        Assert.assertEquals(1,aplication.height(integerBinaryTree),0);
     }
 
 
