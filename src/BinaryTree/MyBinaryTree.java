@@ -11,10 +11,6 @@ public class MyBinaryTree<T> implements BinaryTree<T> {
         this.root = new DoubleNode(root);
     }
 
-    public MyBinaryTree(DoubleNode root){
-        this.root = root;
-    }
-
     public MyBinaryTree(T root, MyBinaryTree left, MyBinaryTree right){
         this.root = new DoubleNode(root);
         this.root.left = left.root;
