@@ -7,35 +7,35 @@ public class ApplicationTest {
 
     @Test
     public void testSize(){
-        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5), new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(3), new OtherBinaryTree<Integer>(3)));
+        MyBinaryTree binaryTree = new MyBinaryTree<Integer>(1, new MyBinaryTree<Integer>(5), new MyBinaryTree<Integer>(3, new MyBinaryTree<Integer>(3), new MyBinaryTree<Integer>(3)));
         Application application = new Application();
         Assert.assertEquals(5, application.getSize(binaryTree));
     }
 
     @Test
     public void testCompleteNodes(){
-        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5), new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(3), new OtherBinaryTree<Integer>(3)));
+        MyBinaryTree binaryTree = new MyBinaryTree<Integer>(1, new MyBinaryTree<Integer>(5), new MyBinaryTree<Integer>(3, new MyBinaryTree<Integer>(3), new MyBinaryTree<Integer>(3)));
         Application application = new Application();
         Assert.assertEquals(2, application.getCompleteNodes(binaryTree));
     }
 
     @Test
     public void testFind(){
-        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5), new OtherBinaryTree<Integer>(5, new OtherBinaryTree<Integer>(3), new OtherBinaryTree<Integer>(3)));
+        MyBinaryTree binaryTree = new MyBinaryTree<Integer>(1, new MyBinaryTree<Integer>(5), new MyBinaryTree<Integer>(5, new MyBinaryTree<Integer>(3), new MyBinaryTree<Integer>(3)));
         Application application = new Application();
         Assert.assertEquals(2,application.find(binaryTree,5));
     }
 
     @Test
     public void testElementsAt(){
-        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5), new OtherBinaryTree<Integer>(3));
+        MyBinaryTree binaryTree = new MyBinaryTree<Integer>(1, new MyBinaryTree<Integer>(5), new MyBinaryTree<Integer>(3));
         Application application = new Application();
         Assert.assertEquals(2, application.elementsAt(binaryTree, 1));
     }
 
     @Test
     public void testHeight(){
-        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5, new OtherBinaryTree<Integer>(69), new OtherBinaryTree<Integer>(420)), new OtherBinaryTree<Integer>(5, new OtherBinaryTree<Integer>(92, new OtherBinaryTree<Integer>(8), new OtherBinaryTree<Integer>(5)), new OtherBinaryTree<Integer>(3)));
+        MyBinaryTree binaryTree = new MyBinaryTree<Integer>(1, new MyBinaryTree<Integer>(5, new MyBinaryTree<Integer>(69), new MyBinaryTree<Integer>(420)), new MyBinaryTree<Integer>(5, new MyBinaryTree<Integer>(92, new MyBinaryTree<Integer>(8), new MyBinaryTree<Integer>(5)), new MyBinaryTree<Integer>(3)));
         Application application = new Application();
         Assert.assertEquals(3,application.height(binaryTree));
     }
@@ -153,14 +153,14 @@ public class ApplicationTest {
 
     @Test
     public void whenCalculatingTreeBorder(){
-        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(8,
-                new OtherBinaryTree<Integer>(2),
-                new OtherBinaryTree<Integer>(3));
-        OtherBinaryTree<Integer> integerBinaryTreeL=new OtherBinaryTree<Integer>(8,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(5));
+        MyBinaryTree<Integer> integerBinaryTreeR=new MyBinaryTree<Integer>(8,
+                new MyBinaryTree<Integer>(2),
+                new MyBinaryTree<Integer>(3));
+        MyBinaryTree<Integer> integerBinaryTreeL=new MyBinaryTree<Integer>(8,
+                new MyBinaryTree<Integer>(4),
+                new MyBinaryTree<Integer>(5));
 
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(8,
                 integerBinaryTreeL,
                 integerBinaryTreeR);
         Application<Integer> application =new Application<Integer>();
@@ -170,14 +170,14 @@ public class ApplicationTest {
 
     @Test
     public void whenCalculatingTreeBorderArray(){
-        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(8,
-                new OtherBinaryTree<Integer>(2),
-                new OtherBinaryTree<Integer>(3));
-        OtherBinaryTree<Integer> integerBinaryTreeL=new OtherBinaryTree<Integer>(8,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(5));
+        MyBinaryTree<Integer> integerBinaryTreeR=new MyBinaryTree<Integer>(8,
+                new MyBinaryTree<Integer>(2),
+                new MyBinaryTree<Integer>(3));
+        MyBinaryTree<Integer> integerBinaryTreeL=new MyBinaryTree<Integer>(8,
+                new MyBinaryTree<Integer>(4),
+                new MyBinaryTree<Integer>(5));
 
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(8,
                 integerBinaryTreeL,
                 integerBinaryTreeR);
         Application<Integer> application =new Application<Integer>();
@@ -189,33 +189,33 @@ public class ApplicationTest {
     @Test
     public void whenCalculatingTreeIsAVLFailed(){
 /*
-        OtherBinaryTree<Integer> integerBinaryTreeRRR=new OtherBinaryTree<Integer>(15,
-                new OtherBinaryTree<Integer>(14),
+        MyBinaryTree<Integer> integerBinaryTreeRRR=new MyBinaryTree<Integer>(15,
+                new MyBinaryTree<Integer>(14),
                 null);
-        OtherBinaryTree<Integer> integerBinaryTreeRR=new OtherBinaryTree<Integer>(7,
+        MyBinaryTree<Integer> integerBinaryTreeRR=new MyBinaryTree<Integer>(7,
                 null,
                 integerBinaryTreeRRR);
-        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(6,
-                new OtherBinaryTree<Integer>(5),
+        MyBinaryTree<Integer> integerBinaryTreeR=new MyBinaryTree<Integer>(6,
+                new MyBinaryTree<Integer>(5),
                 integerBinaryTreeRR);
-        OtherBinaryTree<Integer> integerBinaryTreeL=new OtherBinaryTree<Integer>(2,
-                new OtherBinaryTree<Integer>(1),
-                new OtherBinaryTree<Integer>(3));
+        MyBinaryTree<Integer> integerBinaryTreeL=new MyBinaryTree<Integer>(2,
+                new MyBinaryTree<Integer>(1),
+                new MyBinaryTree<Integer>(3));
 
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(4,
                 integerBinaryTreeL,
                 integerBinaryTreeR);
 
 
  */
 
-        OtherBinaryTree<Integer> integerBinaryTreeRR=new OtherBinaryTree<Integer>(8);
-        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(6,
-                new OtherBinaryTree<Integer>(null),
+        MyBinaryTree<Integer> integerBinaryTreeRR=new MyBinaryTree<Integer>(8);
+        MyBinaryTree<Integer> integerBinaryTreeR=new MyBinaryTree<Integer>(6,
+                new MyBinaryTree<Integer>(null),
                 integerBinaryTreeRR);
 
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
-                new OtherBinaryTree<Integer>(null),
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(4,
+                new MyBinaryTree<Integer>(null),
                 integerBinaryTreeR);
         Application<Integer> application =new Application<Integer>();
 
