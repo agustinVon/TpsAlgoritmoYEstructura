@@ -153,14 +153,14 @@ public class ApplicationTest {
 
     @Test
     public void whenCalculatingTreeBorder(){
-        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(8,
-                new OtherBinaryTree<Integer>(2),
-                new OtherBinaryTree<Integer>(3));
-        OtherBinaryTree<Integer> integerBinaryTreeL=new OtherBinaryTree<Integer>(8,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(5));
+        MyBinaryTree<Integer> integerBinaryTreeR=new MyBinaryTree<Integer>(8,
+                new MyBinaryTree(2),
+                new MyBinaryTree(3));
+        MyBinaryTree<Integer> integerBinaryTreeL=new MyBinaryTree<Integer>(8,
+                new MyBinaryTree(4),
+                new MyBinaryTree(5));
 
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(8,
                 integerBinaryTreeL,
                 integerBinaryTreeR);
         Application<Integer> application =new Application<Integer>();
@@ -170,14 +170,13 @@ public class ApplicationTest {
 
     @Test
     public void whenCalculatingTreeBorderArray(){
-        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(8,
-                new OtherBinaryTree<Integer>(2),
-                new OtherBinaryTree<Integer>(3));
-        OtherBinaryTree<Integer> integerBinaryTreeL=new OtherBinaryTree<Integer>(8,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(5));
-
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
+        MyBinaryTree<Integer> integerBinaryTreeR=new MyBinaryTree<Integer>(8,
+                new MyBinaryTree(2),
+                new MyBinaryTree(3));
+        MyBinaryTree<Integer> integerBinaryTreeL=new MyBinaryTree<Integer>(8,
+                new MyBinaryTree(4),
+                new MyBinaryTree(5));
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(8,
                 integerBinaryTreeL,
                 integerBinaryTreeR);
         Application<Integer> application =new Application<Integer>();
