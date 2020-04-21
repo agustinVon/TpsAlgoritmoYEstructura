@@ -177,6 +177,60 @@ public class Aplication<T extends Comparable<T>> {
         return arrayAuxiliarFronter;
     }
 
+    public void printPreorder(BinaryTree<T> binaryTree) {
+        printPreorder(binaryTree.root);
+    }
 
+    public void printPreorder(DoubleNode node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.element);
+        printPreorder(node.left);
+        printPreorder(node.right);
+    }
 
+    public void printInorder(BinaryTree<T> binaryTree) {
+        printInorder(binaryTree.root);
+    }
+
+    public void printInorder(DoubleNode node) {
+        if (node == null) {
+            return;
+        }
+        printInorder(node.left);
+        System.out.println(node.element);
+        printInorder(node.right);
+    }
+
+    public void printPostorder(BinaryTree<T> binaryTree) {
+        printPostorder(binaryTree.root);
+    }
+
+    public void printPostorder(DoubleNode node) {
+        if (node == null) {
+            return;
+        }
+        printPostorder(node.left);
+        printPostorder(node.right);
+        System.out.println(node.element);
+    }
+
+    public void printByLevel(BinaryTree<T> binaryTree) {
+        for (int i = 0; i < height(binaryTree); i++) {
+            printByLevel(binaryTree.root, i);
+            System.out.println();
+        }
+    }
+
+    void printByLevel(DoubleNode root, int level) {
+        if (root == null)
+            return;
+        if (level == 1)
+            System.out.println(root.element);
+        else if (level > 1) {
+            printByLevel(root.left, level - 1);
+            printByLevel(root.right, level - 1);
+        }
+    }
 }
