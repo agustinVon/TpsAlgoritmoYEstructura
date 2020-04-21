@@ -261,5 +261,11 @@ public class Application<T extends Comparable<T>> {
         }
     }
 
+    void addToTreeBinarySearch(BinaryTree<T> tree,DoubleNode<T> node){
+        if(tree.isEmpty()){
+            tree.getRoot() = ;
+        }
+    }
+
 
 }
