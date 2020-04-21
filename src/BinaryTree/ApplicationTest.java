@@ -3,7 +3,42 @@ package BinaryTree;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class AplicationTest {
+public class ApplicationTest {
+
+    @Test
+    public void testSize(){
+        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5), new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(3), new OtherBinaryTree<Integer>(3)));
+        Application application = new Application();
+        Assert.assertEquals(5, application.getSize(binaryTree));
+    }
+
+    @Test
+    public void testCompleteNodes(){
+        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5), new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(3), new OtherBinaryTree<Integer>(3)));
+        Application application = new Application();
+        Assert.assertEquals(2, application.getCompleteNodes(binaryTree));
+    }
+
+    @Test
+    public void testFind(){
+        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5), new OtherBinaryTree<Integer>(5, new OtherBinaryTree<Integer>(3), new OtherBinaryTree<Integer>(3)));
+        Application application = new Application();
+        Assert.assertEquals(2,application.find(binaryTree,5));
+    }
+
+    @Test
+    public void testElementsAt(){
+        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5), new OtherBinaryTree<Integer>(3));
+        Application application = new Application();
+        Assert.assertEquals(2, application.elementsAt(binaryTree, 1));
+    }
+
+    @Test
+    public void testHeight(){
+        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5, new OtherBinaryTree<Integer>(69), new OtherBinaryTree<Integer>(420)), new OtherBinaryTree<Integer>(5, new OtherBinaryTree<Integer>(92, new OtherBinaryTree<Integer>(8), new OtherBinaryTree<Integer>(5)), new OtherBinaryTree<Integer>(3)));
+        Application application = new Application();
+        Assert.assertEquals(3,application.height(binaryTree));
+    }
 
     @Test
     public void whenCalculatingAmountOfElementsInTreeShouldSucceed(){
@@ -11,7 +46,7 @@ public class AplicationTest {
         new MyBinaryTree(4),
         new MyBinaryTree(5,new MyBinaryTree(3),new MyBinaryTree(2)));
 
-        Aplication<Integer> app=new Aplication<Integer>();
+        Application<Integer> app=new Application<Integer>();
 
         System.out.println(app.sumOfElements(integerBinaryTree));
     }
@@ -22,7 +57,7 @@ public class AplicationTest {
                 new MyBinaryTree(4),
                 new MyBinaryTree(5,new MyBinaryTree(3),new MyBinaryTree(2)));
 
-        Aplication<Integer> app=new Aplication<Integer>();
+        Application<Integer> app=new Application<Integer>();
 
         System.out.println(app.sumOfElementsMultOf3(integerBinaryTree));
     }
@@ -36,9 +71,9 @@ public class AplicationTest {
                 new MyBinaryTree(5,new MyBinaryTree(3),new MyBinaryTree(2)),
                 new MyBinaryTree(4));
 
-        Aplication<Integer> aplication=new Aplication<Integer>();
+        Application<Integer> application =new Application<Integer>();
 
-        Assert.assertTrue(aplication.similar(integerBinaryTree,integerBinaryTree2));
+        Assert.assertTrue(application.similar(integerBinaryTree,integerBinaryTree2));
     }
 
     @Test
@@ -47,9 +82,9 @@ public class AplicationTest {
                 new MyBinaryTree(4),
                 new MyBinaryTree(5,new MyBinaryTree(3),new MyBinaryTree(2)));
 
-        Aplication<Integer> aplication=new Aplication<Integer>();
+        Application<Integer> application =new Application<Integer>();
 
-        Assert.assertFalse(aplication.isFull(integerBinaryTree));
+        Assert.assertFalse(application.isFull(integerBinaryTree));
     }
 
     @Test
@@ -58,9 +93,9 @@ public class AplicationTest {
                 new MyBinaryTree(4),
                 new MyBinaryTree(5));
 
-        Aplication<Integer> aplication=new Aplication<Integer>();
+        Application<Integer> application =new Application<Integer>();
 
-        Assert.assertTrue(aplication.isFull(integerBinaryTree));
+        Assert.assertTrue(application.isFull(integerBinaryTree));
     }
 
     @Test
@@ -69,9 +104,9 @@ public class AplicationTest {
                 new MyBinaryTree(4),
                 new MyBinaryTree(5));
 
-        Aplication<Integer> aplication=new Aplication<Integer>();
+        Application<Integer> application =new Application<Integer>();
 
-        Assert.assertEquals(1,aplication.height(integerBinaryTree),0);
+        Assert.assertEquals(1, application.height(integerBinaryTree),0);
     }
 
     @Test
@@ -80,9 +115,9 @@ public class AplicationTest {
                 new MyBinaryTree(4),
                 new MyBinaryTree(3));
 
-        Aplication<Integer> aplication=new Aplication<Integer>();
+        Application<Integer> application =new Application<Integer>();
 
-        Assert.assertTrue(aplication.isStable(integerBinaryTree));
+        Assert.assertTrue(application.isStable(integerBinaryTree));
     }
 
     @Test
@@ -91,13 +126,13 @@ public class AplicationTest {
                 new MyBinaryTree(4),
                 new MyBinaryTree(33));
 
-        Aplication<Integer> aplication=new Aplication<Integer>();
+        Application<Integer> application =new Application<Integer>();
 
-        Assert.assertFalse(aplication.isStable(integerBinaryTree));
+        Assert.assertFalse(application.isStable(integerBinaryTree));
     }
 
     @Test
-    public void whenCalculatingIfTreeIsInsideOfAnotherTreeShouldSucced(){
+    public void whenCalculatingIfTreeIsInsideOfAnotherTreeShouldSucceed(){
        //HACELO MAU
     }
 
@@ -118,8 +153,8 @@ public class AplicationTest {
         OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
                 integerBinaryTreeL,
                 integerBinaryTreeR);
-        Aplication<Integer> aplication=new Aplication<Integer>();
-        aplication.showBorder(integerBinaryTree);
+        Application<Integer> application =new Application<Integer>();
+        application.showBorder(integerBinaryTree);
 
     }
 
@@ -135,9 +170,9 @@ public class AplicationTest {
         OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
                 integerBinaryTreeL,
                 integerBinaryTreeR);
-        Aplication<Integer> aplication=new Aplication<Integer>();
+        Application<Integer> application =new Application<Integer>();
 
-        Assert.assertEquals(4,aplication.getBorderTree(integerBinaryTree).size());
+        Assert.assertEquals(4, application.getBorderTree(integerBinaryTree).size());
 
     }
 

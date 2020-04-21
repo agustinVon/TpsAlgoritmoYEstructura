@@ -3,11 +3,11 @@ package BinaryTree;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Aplication<T extends Comparable<T>> {
+public class Application<T extends Comparable<T>> {
 
     private ArrayList<T> arrayAuxiliarFronter = new ArrayList<>();
 
-    public Aplication(){
+    public Application(){
 
     }
 
@@ -45,7 +45,7 @@ public class Aplication<T extends Comparable<T>> {
         return elementsAtAuxMethod(binaryTree,level,0);
     }
 
-    public int elementsAtAuxMethod(BinaryTree<T> binaryTree, int level,int currentLevel){
+    public int elementsAtAuxMethod(BinaryTree<T> binaryTree, int level, int currentLevel){
         if(binaryTree.isEmpty()){
             return 0;
         }
@@ -85,10 +85,10 @@ public class Aplication<T extends Comparable<T>> {
         else return false;
     }
 
-    public boolean isomorfic(BinaryTree<T> binaryTree1,BinaryTree<T> binaryTree2){
+    public boolean isomorphic(BinaryTree<T> binaryTree1,BinaryTree<T> binaryTree2){
         if(binaryTree1.isEmpty()&&binaryTree2.isEmpty()) return true;
-        else if(isomorfic(binaryTree1.getLeft(),binaryTree2.getLeft())&&
-                isomorfic(binaryTree1.getRight(),binaryTree2.getRight())) return true;
+        else if(isomorphic(binaryTree1.getLeft(),binaryTree2.getLeft())&&
+                isomorphic(binaryTree1.getRight(),binaryTree2.getRight())) return true;
         else return false;
     }
 
