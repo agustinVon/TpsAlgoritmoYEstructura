@@ -11,17 +11,12 @@ public class MyBinaryTree<T> implements BinaryTree<T> {
         this.root = new DoubleNode(root);
     }
 
-    public MyBinaryTree(DoubleNode root){
-        this.root = root;
-    }
-
     public MyBinaryTree(T root, MyBinaryTree left, MyBinaryTree right){
         this.root = new DoubleNode(root);
         this.root.left = left.root;
         this.root.right = right.root;
     }
 
-    @Override
     public boolean isEmpty() {
         if(root == null){
             return true;
@@ -31,7 +26,6 @@ public class MyBinaryTree<T> implements BinaryTree<T> {
         }
     }
 
-    @Override
     public T getRoot() {
         if(root != null){
             return (T) root.element;
@@ -41,14 +35,12 @@ public class MyBinaryTree<T> implements BinaryTree<T> {
         }
     }
 
-    @Override
     public BinaryTree<T> getRight() {
         MyBinaryTree<T> t=new MyBinaryTree<T>();
         t.root=root.right;
         return t;
     }
 
-    @Override
     public BinaryTree<T> getLeft() {
         MyBinaryTree<T> t=new MyBinaryTree<T>();
         t.root=root.left;

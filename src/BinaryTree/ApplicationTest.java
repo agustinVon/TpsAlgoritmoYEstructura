@@ -3,8 +3,6 @@ package BinaryTree;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.print.attribute.standard.MediaSize;
-
 public class ApplicationTest {
 
     @Test
@@ -135,12 +133,22 @@ public class ApplicationTest {
 
     @Test
     public void whenCalculatingIfTreeIsInsideOfAnotherTreeShouldSucceed(){
-       //HACELO MAU
+        MyBinaryTree<Integer> childBinaryTree = new MyBinaryTree(5, new MyBinaryTree(4), new MyBinaryTree(3) );
+        MyBinaryTree<Integer> parentBinaryTree=new MyBinaryTree<Integer>(5, childBinaryTree, new MyBinaryTree(2));
+
+        Application<Integer> application =new Application<Integer>();
+
+        Assert.assertTrue(application.isInside(parentBinaryTree, childBinaryTree));
     }
 
     @Test
     public void whenCalculatingIfTreeIsInsideOfAnotherTreeShouldFail(){
-        //HACELO MAU x2
+        MyBinaryTree<Integer> childBinaryTree = new MyBinaryTree(5, new MyBinaryTree(4), new MyBinaryTree(3) );
+        MyBinaryTree<Integer> parentBinaryTree=new MyBinaryTree<Integer>(5, new MyBinaryTree(4), new MyBinaryTree(2));
+
+        Application<Integer> application =new Application<Integer>();
+
+        Assert.assertFalse(application.isInside(parentBinaryTree, childBinaryTree));
     }
 
     @Test
@@ -179,30 +187,42 @@ public class ApplicationTest {
     }
 
     @Test
-    public void testPrintPreorder(){
-        OtherBinaryTree<Integer> binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(2, new OtherBinaryTree<Integer>(4), new OtherBinaryTree<Integer>(5)),new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(6), new OtherBinaryTree<Integer>(7)));
-        Application application = new Application<>();
-        application.printPreorder(binaryTree);
+    public void whenCalculatingTreeIsAVLFailed(){
+/*
+        OtherBinaryTree<Integer> integerBinaryTreeRRR=new OtherBinaryTree<Integer>(15,
+                new OtherBinaryTree<Integer>(14),
+                null);
+        OtherBinaryTree<Integer> integerBinaryTreeRR=new OtherBinaryTree<Integer>(7,
+                null,
+                integerBinaryTreeRRR);
+        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(6,
+                new OtherBinaryTree<Integer>(5),
+                integerBinaryTreeRR);
+        OtherBinaryTree<Integer> integerBinaryTreeL=new OtherBinaryTree<Integer>(2,
+                new OtherBinaryTree<Integer>(1),
+                new OtherBinaryTree<Integer>(3));
+
+        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
+                integerBinaryTreeL,
+                integerBinaryTreeR);
+
+
+ */
+
+        OtherBinaryTree<Integer> integerBinaryTreeRR=new OtherBinaryTree<Integer>(8);
+        OtherBinaryTree<Integer> integerBinaryTreeR=new OtherBinaryTree<Integer>(6,
+                new OtherBinaryTree<Integer>(null),
+                integerBinaryTreeRR);
+
+        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
+                new OtherBinaryTree<Integer>(null),
+                integerBinaryTreeR);
+        Application<Integer> application =new Application<Integer>();
+
+        Assert.assertFalse(application.checkAVL(integerBinaryTree));
+
     }
 
-    @Test
-    public void testPrintInorder(){
-        OtherBinaryTree<Integer> binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(2, new OtherBinaryTree<Integer>(4), new OtherBinaryTree<Integer>(5)),new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(6), new OtherBinaryTree<Integer>(7)));
-        Application application = new Application<>();
-        application.printInorder(binaryTree);
-    }
 
-    @Test
-    public void testPrintPostorder(){
-        OtherBinaryTree<Integer> binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(2, new OtherBinaryTree<Integer>(4), new OtherBinaryTree<Integer>(5)),new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(6), new OtherBinaryTree<Integer>(7)));
-        Application application = new Application<>();
-        application.printPostorder(binaryTree);
-    }
 
-    @Test
-    public void testPrintByLevels(){
-        OtherBinaryTree<Integer> binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(2, new OtherBinaryTree<Integer>(4), new OtherBinaryTree<Integer>(5)),new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(6), new OtherBinaryTree<Integer>(7)));
-        Application application = new Application<>();
-        application.printByLevel(binaryTree);
-    }
 }
