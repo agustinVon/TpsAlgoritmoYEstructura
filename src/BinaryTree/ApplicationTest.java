@@ -3,6 +3,8 @@ package BinaryTree;
 import org.junit.Assert;
 import org.junit.Test;
 
+import javax.print.attribute.standard.MediaSize;
+
 public class ApplicationTest {
 
     @Test
@@ -176,5 +178,31 @@ public class ApplicationTest {
 
     }
 
+    @Test
+    public void testPrintPreorder(){
+        OtherBinaryTree<Integer> binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(2, new OtherBinaryTree<Integer>(4), new OtherBinaryTree<Integer>(5)),new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(6), new OtherBinaryTree<Integer>(7)));
+        Application application = new Application<>();
+        application.printPreorder(binaryTree);
+    }
 
+    @Test
+    public void testPrintInorder(){
+        OtherBinaryTree<Integer> binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(2, new OtherBinaryTree<Integer>(4), new OtherBinaryTree<Integer>(5)),new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(6), new OtherBinaryTree<Integer>(7)));
+        Application application = new Application<>();
+        application.printInorder(binaryTree);
+    }
+
+    @Test
+    public void testPrintPostorder(){
+        OtherBinaryTree<Integer> binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(2, new OtherBinaryTree<Integer>(4), new OtherBinaryTree<Integer>(5)),new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(6), new OtherBinaryTree<Integer>(7)));
+        Application application = new Application<>();
+        application.printPostorder(binaryTree);
+    }
+
+    @Test
+    public void testPrintByLevels(){
+        OtherBinaryTree<Integer> binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(2, new OtherBinaryTree<Integer>(4), new OtherBinaryTree<Integer>(5)),new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(6), new OtherBinaryTree<Integer>(7)));
+        Application application = new Application<>();
+        application.printByLevel(binaryTree);
+    }
 }
