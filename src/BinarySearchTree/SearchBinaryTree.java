@@ -9,6 +9,6 @@ public class SearchBinaryTree<T extends Comparable<T>> extends MyBinaryTree<T> {
     }
 
     public void insert(T element){
-        if(root)
+        //if(root)
     }
 }
