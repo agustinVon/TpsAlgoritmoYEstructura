@@ -76,5 +76,27 @@ public class AplicationTest {
         Assert.assertEquals(1,aplication.height(integerBinaryTree),0);
     }
 
+    @Test
+    public void whenCalculatingIfTreeIsStableShouldSucced(){
+        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
+                new OtherBinaryTree<Integer>(4),
+                new OtherBinaryTree<Integer>(5));
+
+        Aplication<Integer> aplication=new Aplication<Integer>();
+
+        Assert.assertTrue(aplication.isStable(integerBinaryTree));
+    }
+
+    @Test
+    public void whenCalculatingIfTreeIsStableShouldFail(){
+        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
+                new OtherBinaryTree<Integer>(4),
+                new OtherBinaryTree<Integer>(12));
+
+        Aplication<Integer> aplication=new Aplication<Integer>();
+
+        Assert.assertFalse(aplication.isStable(integerBinaryTree));
+    }
+
 
 }

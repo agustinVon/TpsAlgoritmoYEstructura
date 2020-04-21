@@ -2,7 +2,7 @@ package BinaryTree;
 
 import java.util.HashSet;
 
-public class Aplication<T> {
+public class Aplication<T extends Comparable<T>> {
 
     public Aplication(){
 
@@ -128,5 +128,14 @@ public class Aplication<T> {
         else return false;
     }
 
-
+    boolean isStable(BinaryTree<T> tree){
+        if(tree.isEmpty()) return true;
+        else if(tree.getLeft().isEmpty()&&tree.getRight().isEmpty()) return true;
+        else{
+            if(tree.getRoot().compareTo(tree.getLeft().getRoot())<0 || tree.getRoot().compareTo(tree.getRight().getRoot())<0){
+                return false;
+            }
+            else return isStable(tree.getLeft())&&isStable(tree.getRight());
+        }
+    }
 }
