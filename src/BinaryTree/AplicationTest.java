@@ -9,9 +9,9 @@ public class AplicationTest {
 
     @Test
     public void whenCalculatingAmountOfElementsInTreeShouldSucceed(){
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
-        new OtherBinaryTree<Integer>(4),
-        new OtherBinaryTree<Integer>(5,new OtherBinaryTree<Integer>(3),new OtherBinaryTree<Integer>(2)));
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(4,
+        new MyBinaryTree(4),
+        new MyBinaryTree(5,new MyBinaryTree(3),new MyBinaryTree(2)));
 
         Aplication<Integer> app=new Aplication<Integer>();
 
@@ -20,9 +20,9 @@ public class AplicationTest {
 
     @Test
     public void whenCalculatingAmountOfElementsMultOf3InTreeShouldSucceed(){
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(5,new OtherBinaryTree<Integer>(3),new OtherBinaryTree<Integer>(2)));
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(4,
+                new MyBinaryTree(4),
+                new MyBinaryTree(5,new MyBinaryTree(3),new MyBinaryTree(2)));
 
         Aplication<Integer> app=new Aplication<Integer>();
 
@@ -31,12 +31,12 @@ public class AplicationTest {
 
     @Test
     public void whenComparingTwoSimilarTreesShouldSucceed(){
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(5,new OtherBinaryTree<Integer>(3),new OtherBinaryTree<Integer>(2)));
-        OtherBinaryTree<Integer> integerBinaryTree2=new OtherBinaryTree<Integer>(4,
-                new OtherBinaryTree<Integer>(5,new OtherBinaryTree<Integer>(3),new OtherBinaryTree<Integer>(2)),
-                new OtherBinaryTree<Integer>(4));
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(4,
+                new MyBinaryTree(4),
+                new MyBinaryTree(5,new MyBinaryTree(3),new MyBinaryTree(2)));
+        MyBinaryTree<Integer> integerBinaryTree2=new MyBinaryTree<Integer>(4,
+                new MyBinaryTree(5,new MyBinaryTree(3),new MyBinaryTree(2)),
+                new MyBinaryTree(4));
 
         Aplication<Integer> aplication=new Aplication<Integer>();
 
@@ -45,9 +45,9 @@ public class AplicationTest {
 
     @Test
     public void whenCheckingATreeIsFullShouldFail(){
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(5,new OtherBinaryTree<Integer>(3),new OtherBinaryTree<Integer>(2)));
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(4,
+                new MyBinaryTree(4),
+                new MyBinaryTree(5,new MyBinaryTree(3),new MyBinaryTree(2)));
 
         Aplication<Integer> aplication=new Aplication<Integer>();
 
@@ -56,9 +56,9 @@ public class AplicationTest {
 
     @Test
     public void whenCheckingATreeIsFullShouldSucceed(){
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(5));
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(4,
+                new MyBinaryTree(4),
+                new MyBinaryTree(5));
 
         Aplication<Integer> aplication=new Aplication<Integer>();
 
@@ -67,9 +67,9 @@ public class AplicationTest {
 
     @Test
     public void whenCalculatingHeightShouldSucceed(){
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(4,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(5));
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(4,
+                new MyBinaryTree(4),
+                new MyBinaryTree(5));
 
         Aplication<Integer> aplication=new Aplication<Integer>();
 
@@ -78,9 +78,9 @@ public class AplicationTest {
 
     @Test
     public void whenCalculatingIfTreeIsStableShouldSucced(){
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(5));
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(4,
+                new MyBinaryTree(4),
+                new MyBinaryTree(3));
 
         Aplication<Integer> aplication=new Aplication<Integer>();
 
@@ -89,9 +89,9 @@ public class AplicationTest {
 
     @Test
     public void whenCalculatingIfTreeIsStableShouldFail(){
-        OtherBinaryTree<Integer> integerBinaryTree=new OtherBinaryTree<Integer>(8,
-                new OtherBinaryTree<Integer>(4),
-                new OtherBinaryTree<Integer>(12));
+        MyBinaryTree<Integer> integerBinaryTree=new MyBinaryTree<Integer>(4,
+                new MyBinaryTree(4),
+                new MyBinaryTree(33));
 
         Aplication<Integer> aplication=new Aplication<Integer>();
 
