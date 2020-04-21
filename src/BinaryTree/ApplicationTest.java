@@ -7,7 +7,7 @@ public class ApplicationTest {
 
     @Test
     public void testSize(){
-        OtherBinaryTree binaryTree = new OtherBinaryTree<Integer>(1, new OtherBinaryTree<Integer>(5), new OtherBinaryTree<Integer>(3, new OtherBinaryTree<Integer>(3), new OtherBinaryTree<Integer>(3)));
+        MyBinaryTree binaryTree = new MyBinaryTree(1, new MyBinaryTree(5), new MyBinaryTree(3, new MyBinaryTree(3), new MyBinaryTree(3)));
         Application application = new Application();
         Assert.assertEquals(5, application.getSize(binaryTree));
     }
