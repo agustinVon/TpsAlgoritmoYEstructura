@@ -43,11 +43,15 @@ public class MyBinaryTree<T> implements BinaryTree<T> {
 
     @Override
     public BinaryTree<T> getRight() {
-        return new MyBinaryTree(root.right);
+        MyBinaryTree<T> t=new MyBinaryTree<T>();
+        t.root=root.right;
+        return t;
     }
 
     @Override
     public BinaryTree<T> getLeft() {
-        return new MyBinaryTree(root.right);
+        MyBinaryTree<T> t=new MyBinaryTree<T>();
+        t.root=root.left;
+        return t;
     }
 }
