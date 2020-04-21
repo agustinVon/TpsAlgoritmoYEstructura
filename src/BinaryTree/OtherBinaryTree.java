@@ -1,7 +1,5 @@
 package BinaryTree;
 
-import javax.print.attribute.standard.MediaSize;
-
 public class OtherBinaryTree<T> implements BinaryTree<T>{
 
     OtherBinaryTree rightNode;
@@ -22,7 +20,6 @@ public class OtherBinaryTree<T> implements BinaryTree<T>{
         this.rightNode=rightNode;
     }
 
-    @Override
     public boolean isEmpty() {
         if(root == null){
             return true;
@@ -32,17 +29,14 @@ public class OtherBinaryTree<T> implements BinaryTree<T>{
         }
     }
 
-    @Override
     public T getRoot() {
         return root;
     }
 
-    @Override
     public BinaryTree<T> getRight() {
         return rightNode;
     }
 
-    @Override
     public BinaryTree<T> getLeft() {
         return leftNode;
     }

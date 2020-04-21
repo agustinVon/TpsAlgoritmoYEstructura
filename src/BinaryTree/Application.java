@@ -42,26 +42,26 @@ public class Application<T extends Comparable<T>> {
     }
 
     public int elementsAt(BinaryTree<T> binaryTree, int level){
-        return elementsAtAuxMethod(binaryTree,level,0);
+        return elementsAt(binaryTree,level,0);
     }
 
-    public int elementsAtAuxMethod(BinaryTree<T> binaryTree, int level, int currentLevel){
-        if(binaryTree.isEmpty()){
-            return 0;
+    private int elementsAt(BinaryTree<T> binaryTree, int level, int currentLevel){
+        if(binaryTree.isEmpty()) return 0;
+        else if (level==currentLevel) return 1;
+        else {
+            currentLevel++;
+            return elementsAt(binaryTree.getLeft(),level,currentLevel) + elementsAt(binaryTree.getRight(),level,currentLevel);
         }
-        else if(level==currentLevel) return 1;
-        else return elementsAtAuxMethod(binaryTree.getLeft(),level,currentLevel++)
-                    +elementsAtAuxMethod(binaryTree.getRight(),level,currentLevel++);
     }
 
-    public int height(BinaryTree<T> tree){
-        if(tree.isEmpty()) return -1;
+    public int height(BinaryTree<T> binaryTree){
+        if(binaryTree.isEmpty()) return -1;
         else{
-            int leftTreeHeight = height(tree.getLeft());
-            int rightTreeHeight = height(tree.getRight());
+            int leftTreeHeight = height(binaryTree.getLeft());
+            int rightTreeHeight = height(binaryTree.getRight());
             if(rightTreeHeight==0 && leftTreeHeight==0) return 1;
-            else if(rightTreeHeight>leftTreeHeight) return height(tree.getRight())+1;
-            else return height(tree.getLeft())+1;
+            else if(rightTreeHeight>leftTreeHeight) return height(binaryTree.getRight())+1;
+            else return height(binaryTree.getLeft())+1;
         }
     }
 
@@ -93,69 +93,72 @@ public class Application<T extends Comparable<T>> {
     }
 
     public boolean similar(BinaryTree<T> binaryTree1,BinaryTree<T> binaryTree2){
-        HashSet<T> elementsOfTree1=getAllElementsOfTree(binaryTree1,new HashSet<>());
-        HashSet<T> elementsOfTree2=getAllElementsOfTree(binaryTree2,new HashSet<>());
+        HashSet<T> elementsOfTree1= getAllElements(binaryTree1,new HashSet<>());
+        HashSet<T> elementsOfTree2= getAllElements(binaryTree2,new HashSet<>());
         if(elementsOfTree1.containsAll(elementsOfTree2)) return true;
         else return false;
     }
 
-    private HashSet<T> getAllElementsOfTree(BinaryTree<T> binaryTree,HashSet<T> elements){
+    private HashSet<T> getAllElements(BinaryTree<T> binaryTree, HashSet<T> elements){
         if(binaryTree.isEmpty()) return elements;
         else{
             elements.add(binaryTree.getRoot());
-            getAllElementsOfTree(binaryTree.getRight(),elements);
-            getAllElementsOfTree(binaryTree.getLeft(),elements);
+            getAllElements(binaryTree.getRight(),elements);
+            getAllElements(binaryTree.getLeft(),elements);
             return elements;
         }
     }
 
-    boolean isComplete(BinaryTree<T> tree){
-        if(tree.isEmpty()) return false;
-        else if(tree.getRight().isEmpty()&&tree.getLeft().isEmpty()) return true;
-        else return isComplete(tree.getRight()) && isComplete(tree.getLeft());
+    public boolean isComplete(BinaryTree<T> binaryTree){
+        if(binaryTree.isEmpty()) return false;
+        else if(binaryTree.getRight().isEmpty()&&binaryTree.getLeft().isEmpty()) return true;
+        else return isComplete(binaryTree.getRight()) && isComplete(binaryTree.getLeft());
     }
 
-    boolean isFull(BinaryTree<T> tree){
-        return isFullAuxiliarMethod(tree,1,height(tree));
+    public boolean isFull(BinaryTree<T> binaryTree){
+        return isFull(binaryTree,1,height(binaryTree));
     }
 
-    boolean isFullAuxiliarMethod(BinaryTree<T> tree,int n,int height){
-        if(tree.isEmpty()) return false;
-        else if(!tree.getRight().isEmpty() && !tree.getLeft().isEmpty()){
+    private boolean isFull(BinaryTree<T> binaryTree, int n, int height){
+        if(binaryTree.isEmpty()) return false;
+        else if(!binaryTree.getRight().isEmpty() && !binaryTree.getLeft().isEmpty()){
             if(n==height) return true;
             else{
                 int p=n+1;
-                return isFullAuxiliarMethod(tree.getLeft(),p,height)&&isFullAuxiliarMethod(tree.getRight(),p,height);
+                return isFull(binaryTree.getLeft(),p,height)&& isFull(binaryTree.getRight(),p,height);
             }
         }
         else return false;
     }
 
-    boolean isStable(BinaryTree<T> tree){
-        if(tree.isEmpty()) return true;
-        else if(tree.getLeft().isEmpty()&&tree.getRight().isEmpty()) return true;
+    public boolean isStable(BinaryTree<T> binaryTree){
+        if(binaryTree.isEmpty()) return true;
+        else if(binaryTree.getLeft().isEmpty()&&binaryTree.getRight().isEmpty()) return true;
         else{
-            if(tree.getRoot().compareTo(tree.getLeft().getRoot())<0 || tree.getRoot().compareTo(tree.getRight().getRoot())<0){
+            if(binaryTree.getRoot().compareTo(binaryTree.getLeft().getRoot())<0 || binaryTree.getRoot().compareTo(binaryTree.getRight().getRoot())<0){
                 return false;
             }
-            else return isStable(tree.getLeft())&&isStable(tree.getRight());
+            else return isStable(binaryTree.getLeft())&&isStable(binaryTree.getRight());
         }
     }
 
-    boolean aTreeIsInsideAnotherTree(BinaryTree<T> treeGod, BinaryTree<T> treeHuman){
-        if(treeGod.isEmpty() && treeHuman.isEmpty()){
+    public boolean isInside(BinaryTree<T> binaryTree1, BinaryTree<T> binaryTree2){
+        if(binaryTree1.isEmpty() && binaryTree2.isEmpty()){
             return true;
-        }
-        else if(treeGod.getRoot().compareTo(treeHuman.getRoot()) == 0){
-            return equals(treeGod, treeHuman);
-        }else if(!treeGod.getRight().isEmpty() || !treeGod.getLeft().isEmpty()){
-            return aTreeIsInsideAnotherTree(treeGod.getLeft(),treeHuman.getLeft()) || aTreeIsInsideAnotherTree(treeGod.getRight(),treeHuman.getRight());
+        } else if(binaryTree1.getRoot().compareTo(binaryTree2.getRoot()) == 0 && equals(binaryTree1, binaryTree2)){
+            return true;
+        } else if(!binaryTree1.getLeft().isEmpty() && !binaryTree1.getRight().isEmpty()) {
+            return (isInside(binaryTree1.getLeft(), binaryTree2) || isInside(binaryTree1.getRight(),binaryTree2));
+        } else if(!binaryTree1.getRight().isEmpty()){
+            return isInside(binaryTree1.getRight(),binaryTree2);
+        } else if(!binaryTree1.getLeft().isEmpty()){
+            return isInside(binaryTree1.getLeft(),binaryTree2);
         }
         return false;
     }
 
-    void showBorder(BinaryTree<T> tree){
-        getBorderTree(tree);
+    public void showBorder(BinaryTree<T> binaryTree){
+        getBorderTree(binaryTree);
 
         for (T t:arrayAuxiliarFronter) {
             System.out.println(t);
@@ -163,15 +166,15 @@ public class Application<T extends Comparable<T>> {
 
     }
 
-    ArrayList<T> getBorderTree(BinaryTree<T> tree){
-        if(tree.isEmpty()){
+    public ArrayList<T> getBorderTree(BinaryTree<T> binaryTree){
+        if(binaryTree.isEmpty()){
             System.out.println("");
         }
-        else if(tree.getLeft().isEmpty() && tree.getRight().isEmpty()){
-            arrayAuxiliarFronter.add(tree.getRoot());
-        }else{
-            getBorderTree(tree.getLeft());
-            getBorderTree(tree.getRight());
+        else if(binaryTree.getLeft().isEmpty() && binaryTree.getRight().isEmpty()){
+            arrayAuxiliarFronter.add(binaryTree.getRoot());
+        } else {
+            getBorderTree(binaryTree.getLeft());
+            getBorderTree(binaryTree.getRight());
         }
 
         return arrayAuxiliarFronter;

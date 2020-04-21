@@ -133,12 +133,22 @@ public class ApplicationTest {
 
     @Test
     public void whenCalculatingIfTreeIsInsideOfAnotherTreeShouldSucceed(){
-       //HACELO MAU
+        MyBinaryTree<Integer> childBinaryTree = new MyBinaryTree(5, new MyBinaryTree(4), new MyBinaryTree(3) );
+        MyBinaryTree<Integer> parentBinaryTree=new MyBinaryTree<Integer>(5, childBinaryTree, new MyBinaryTree(2));
+
+        Application<Integer> application =new Application<Integer>();
+
+        Assert.assertTrue(application.isInside(parentBinaryTree, childBinaryTree));
     }
 
     @Test
     public void whenCalculatingIfTreeIsInsideOfAnotherTreeShouldFail(){
-        //HACELO MAU x2
+        MyBinaryTree<Integer> childBinaryTree = new MyBinaryTree(5, new MyBinaryTree(4), new MyBinaryTree(3) );
+        MyBinaryTree<Integer> parentBinaryTree=new MyBinaryTree<Integer>(5, new MyBinaryTree(4), new MyBinaryTree(2));
+
+        Application<Integer> application =new Application<Integer>();
+
+        Assert.assertFalse(application.isInside(parentBinaryTree, childBinaryTree));
     }
 
     @Test
@@ -175,6 +185,5 @@ public class ApplicationTest {
         Assert.assertEquals(4, application.getBorderTree(integerBinaryTree).size());
 
     }
-
 
 }
