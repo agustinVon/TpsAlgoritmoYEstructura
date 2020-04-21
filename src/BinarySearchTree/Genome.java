@@ -1,6 +1,6 @@
 package BinarySearchTree;
 
-public class Genome {
+public class Genome implements Comparable<Genome> {
     int codeGenome;
     String typeOfGenome;
     String descriptionOfGenome;
@@ -43,5 +43,10 @@ public class Genome {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    @Override
+    public int compareTo(Genome o) {
+        return codeGenome-o.getCodeGenome();
     }
 }
