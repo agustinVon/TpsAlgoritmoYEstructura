@@ -229,7 +229,7 @@ public class Application<T extends Comparable<T>> {
         }
     }
 
-    void printByLevel(DoubleNode root, int level) {
+    public void printByLevel(DoubleNode root, int level) {
         if (root == null)
             return;
         if (level == 1)
