@@ -1,7 +1,7 @@
 package BinaryTree;
 
 public class MyBinaryTree<T> implements BinaryTree<T> {
-    DoubleNode root;
+    DoubleNode<T> root;
 
     public MyBinaryTree(){
 
@@ -28,7 +28,7 @@ public class MyBinaryTree<T> implements BinaryTree<T> {
 
     public T getRoot() {
         if(root != null){
-            return (T) root.element;
+            return root.getElement();
         }
         else{
             return null;

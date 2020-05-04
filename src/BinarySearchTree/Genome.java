@@ -1,52 +1,45 @@
 package BinarySearchTree;
 
 public class Genome implements Comparable<Genome> {
-    int codeGenome;
+    GenomeCode codeGenome;
     String typeOfGenome;
     String descriptionOfGenome;
     int size;
 
-    public Genome(int codeGenome, String typeOfGenome, String descriptionOfGenome, int size) {
+    public Genome(GenomeCode codeGenome, String typeOfGenome, String descriptionOfGenome, int size) {
         this.codeGenome = codeGenome;
         this.typeOfGenome = typeOfGenome;
         this.descriptionOfGenome = descriptionOfGenome;
+        if(size>99 || size<-99){
+            throw new RuntimeException();
+        }
         this.size = size;
     }
 
-    public int getCodeGenome() {
+    public GenomeCode getCodeGenome() {
         return codeGenome;
-    }
-
-    public void setCodeGenome(int codeGenome) {
-        this.codeGenome = codeGenome;
     }
 
     public String getTypeOfGenome() {
         return typeOfGenome;
     }
 
-    public void setTypeOfGenome(String typeOfGenome) {
-        this.typeOfGenome = typeOfGenome;
-    }
-
     public String getDescriptionOfGenome() {
         return descriptionOfGenome;
-    }
-
-    public void setDescriptionOfGenome(String descriptionOfGenome) {
-        this.descriptionOfGenome = descriptionOfGenome;
     }
 
     public int getSize() {
         return size;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
-
     @Override
     public int compareTo(Genome o) {
-        return codeGenome-o.getCodeGenome();
+        return codeGenome.compareTo(o.getCodeGenome());
+    }
+
+    public boolean equals(Object o){
+        Genome toCompare=(Genome) o;
+        if(toCompare.getCodeGenome().equals(codeGenome))return true;
+        else return false;
     }
 }
