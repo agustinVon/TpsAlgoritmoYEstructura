@@ -8,14 +8,21 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
     DoubleNode<T> rootNode;
 
     SearchBinaryTree(T root){
-        rootNode=new DoubleNode(root);
+        rootNode=new DoubleNode<T>(root);
     }
-    SearchBinaryTree(){}
+
+    SearchBinaryTree(T root, SearchBinaryTree<T> left, SearchBinaryTree<T> right){
+        rootNode = new DoubleNode<T>(root);
+        rootNode.left = left.rootNode;
+        rootNode.right = right.rootNode;
+    }
+
+    SearchBinaryTree(){
+    }
 
     @Override
     public boolean isEmpty() {
-        if(rootNode==null) return true;
-        else return false;
+        return rootNode==null;
     }
 
     @Override
@@ -43,13 +50,8 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
      *
      * @param element element to insert
      */
-    public void insert(T element){
-        if(isEmpty()) rootNode=new DoubleNode(element);
-        else if(element.compareTo(rootNode.element)>0){
-            insert(element,getRight());
-        }
-        else insert(element,getLeft());
-    }
+
+
 
     /**
      *
@@ -58,12 +60,42 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
      * @param element element to insert
      * @param binaryTree tree where you want to insert element
      */
-    private void insert(T element,SearchBinaryTree<T> binaryTree){
-        if(binaryTree.isEmpty()) binaryTree.rootNode=new DoubleNode(element);
-        else if(element.compareTo(binaryTree.getRoot())>0){
-            insert(element,binaryTree.getRight());
+
+    /*
+    private void insert(T element, SearchBinaryTree<T> binaryTree) {
+        if (binaryTree.isEmpty()) binaryTree.rootNode = new DoubleNode(element);
+        else if(element.compareTo(binaryTree.getRoot()) > 0) {
+            insert(element, binaryTree.getRight());
         }
-        else insert(element,binaryTree.getLeft());
+        else if(element.compareTo(binaryTree.getRoot()) < 0) {
+            insert(element, binaryTree.getLeft());
+        }
+        return;
+    }
+
+    public void insert(T element){
+        if(isEmpty()) rootNode = new DoubleNode(element);
+        else if(element.compareTo(rootNode.element)>0){
+            insert(element,getRight());
+        }
+        else insert(element,getLeft());
+    }
+    */
+
+    public void insert(T element){
+        insert(rootNode, element);
+    }
+
+    public DoubleNode<T> insert(DoubleNode<T> node, T element) {
+        if (node == null) {
+            node = new DoubleNode(element);
+            return node;
+        }
+        if (element.compareTo(node.element)>0)
+            node.right = insert(node.right, element);
+        else if (element.compareTo(node.element)<0)
+            node.left = insert(node.left, element);
+        return node;
     }
 
     /**
@@ -74,6 +106,8 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
      *
      * @param element element you want to delete
      */
+
+    /*
     public void delete(T element){
         if(isEmpty()){
             throw new RuntimeException();
@@ -88,6 +122,7 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
             else delete(element,getLeft());
         }
     }
+     */
 
     /**
      *
@@ -96,20 +131,23 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
      * @param element element you want to delete
      * @param binaryTree tree yo want to delete element from
      */
+
+    /*
     private void delete(T element,SearchBinaryTree<T> binaryTree){
         if(binaryTree.isEmpty()){
             throw new RuntimeException();
         }
         else{
             if(element.equals(binaryTree.getRoot())){
-                deleteRootElement(this);
+                deleteRootElement(binaryTree);
             }
             else if(element.compareTo(binaryTree.getRoot())>0){
-                delete(element,getRight());
+                delete(element,binaryTree.getRight());
             }
-            else delete(element,getLeft());
+            else delete(element,binaryTree.getLeft());
         }
     }
+    */
 
     /**
      *
@@ -120,6 +158,8 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
      *
      * @param binaryTree tree which its root is the element you want to delete
      */
+
+    /*
     private void deleteRootElement(SearchBinaryTree<T> binaryTree){
         if(binaryTree.rootNode.right==null && binaryTree.rootNode.left==null){
             binaryTree.rootNode=null;
@@ -134,6 +174,7 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
             rootNode.element=getMinAndEliminateNode(binaryTree.getRight());
         }
     }
+     */
 
     /**
      * Finds minimum value, deletes it and returns minimum
@@ -141,6 +182,8 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
      * @param binaryTree binary tree you want to get minimum and delete minimum from
      * @return minimum
      */
+
+    /*
     private T getMinAndEliminateNode(SearchBinaryTree<T> binaryTree){
         if(binaryTree.getLeft().rootNode==null){
             T min=binaryTree.getRoot();
@@ -149,8 +192,48 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
         }
         else return getMinAndEliminateNode(binaryTree.getLeft());
     }
+     */
 
-    public boolean search(T element){
+    public void delete(T element) {
+        deleteRootElement(rootNode, element);
+    }
+
+    private DoubleNode<T> deleteRootElement(DoubleNode<T> node, T element) {
+        if(node == null){
+            return node;
+        }
+        if(element.compareTo(node.element) < 0){
+            node.left = deleteRootElement(node.left, element);
+        }
+        else if(element.compareTo(node.element) > 0){
+            node.right = deleteRootElement(node.right, element);
+        }
+        else{
+            if(node.right == null && node.right == null) {
+                return null;
+            }
+            else if(node.left == null) {
+                return node.right;
+            } else if(node.right == null) {
+                return node.left;
+            } else {
+                T minValue = minValue(node.right);
+                node.element = minValue;
+                node.right = deleteRootElement(node.right, minValue);
+            }
+        }
+        return node;
+    }
+
+    private T minValue(DoubleNode<T> node) {
+
+        if(node.left != null) {
+            return minValue(node.left);
+        }
+        return node.element;
+    }
+
+    public boolean exists(T element){
         if(isEmpty()){
             throw new RuntimeException();
         }
@@ -159,24 +242,41 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
                 return true;
             }
             else if(element.compareTo(rootNode.element)>0){
-                return search(element,getRight());
+                return exists(element,getRight());
             }
-            else return search(element,getLeft());
+            else return exists(element,getLeft());
         }
     }
 
-    private boolean search(T element, SearchBinaryTree<T> binaryTree) {
-        if(binaryTree.isEmpty()){
-            throw new RuntimeException();
+    private boolean exists(T element, SearchBinaryTree<T> searchBinaryTree) {
+        if(searchBinaryTree.isEmpty()){
+            return false;
         }
         else{
-            if(element.equals(binaryTree.getRoot())){
+            if(searchBinaryTree.getRoot().equals(element)){
                 return true;
             }
-            else if(element.compareTo(binaryTree.getRoot())>0){
-                return search(element,getRight());
+            else if(element.compareTo(searchBinaryTree.getRoot())>0){
+                return exists(element,searchBinaryTree.getRight());
             }
-            else return search(element,getLeft());
+            else return exists(element,searchBinaryTree.getLeft());
         }
     }
+
+
+
+    /*
+    private boolean exists(T element, DoubleNode<T> node) {
+        if(node == null || node.element == null){
+            return false;
+        }
+        if(node.element == element){
+            return true;
+        }
+        if (element.compareTo(node.element)>0){
+            return exists(element, node.right);
+        }
+        return exists(element, node.left);
+    }
+     */
 }

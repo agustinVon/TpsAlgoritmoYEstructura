@@ -86,7 +86,7 @@ public class UserInterface {
                         System.out.println("Type genome size: ");
                         int size2 = scn.nextInt();
                         System.out.println("\n");
-                        if(tree.search(new Genome(code, type2, descr2, size2))){
+                        if(tree.exists(new Genome(code, type2, descr2, size2))){
                             System.out.println("Tree contains Genome");
                         }
                         else System.out.println("Tree does not contain Genome");

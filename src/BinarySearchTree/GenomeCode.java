@@ -17,8 +17,7 @@ public class GenomeCode implements Comparable<GenomeCode> {
 
     public boolean equals(Object o){
         GenomeCode toCompare= (GenomeCode) o;
-        if((code.equals(toCompare.getCode()))) return true;
-        else return false;
+        return code.equals(toCompare.getCode());
     }
 
     @Override
