@@ -61,27 +61,6 @@ public class SearchBinaryTree<T extends Comparable<T>> implements BinaryTree<T> 
      * @param binaryTree tree where you want to insert element
      */
 
-    /*
-    private void insert(T element, SearchBinaryTree<T> binaryTree) {
-        if (binaryTree.isEmpty()) binaryTree.rootNode = new DoubleNode(element);
-        else if(element.compareTo(binaryTree.getRoot()) > 0) {
-            insert(element, binaryTree.getRight());
-        }
-        else if(element.compareTo(binaryTree.getRoot()) < 0) {
-            insert(element, binaryTree.getLeft());
-        }
-        return;
-    }
-
-    public void insert(T element){
-        if(isEmpty()) rootNode = new DoubleNode(element);
-        else if(element.compareTo(rootNode.element)>0){
-            insert(element,getRight());
-        }
-        else insert(element,getLeft());
-    }
-    */
-
     public void insert(T element){
         insert(rootNode, element);
     }
