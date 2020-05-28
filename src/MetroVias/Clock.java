@@ -1,5 +1,6 @@
 package MetroVias;
 
+//Global clock
 public class Clock {
 
     int time=0;

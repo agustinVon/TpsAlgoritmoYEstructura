@@ -1,7 +1,7 @@
 package MetroVias;
 
-public class Person {
 
+public class Person {
     Ticket ticket;
 
     public Person(Clock watch) {

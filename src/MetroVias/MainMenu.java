@@ -8,11 +8,13 @@ public class MainMenu {
         Random rand=new Random();
         Scanner scn=new Scanner(System.in);
 
+        // Initialization
         Finances globalFinances=new Finances(1);
         Clock clock=new Clock();
         TimeCounter globalTimeCounter=new TimeCounter();
         StationStack stationStack= new StationStack();
 
+        //Creating new windows
         System.out.println("Set amount of windows: ");
         int amountOfWindows = scn.nextInt(); //can get in trouble with nextint check later
         if(amountOfWindows>25||amountOfWindows<5){
@@ -23,6 +25,7 @@ public class MainMenu {
             windows[i]=new WindowPost(new TimeCounter(),new Finances(1));
         }
 
+        //Metrovias menu
         while(true){
             System.out.println("Menu: ");
             System.out.println("1. Pass 30 seconds");

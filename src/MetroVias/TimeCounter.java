@@ -2,6 +2,7 @@ package MetroVias;
 
 import java.util.ArrayList;
 
+//Window time counter
 public class TimeCounter {
     ArrayList<Integer> times;
 

@@ -2,6 +2,7 @@ package MetroVias;
 
 import java.util.Random;
 
+//Ticket generates when a person is enqueued
 public class Ticket {
 
     int num;
