@@ -7,6 +7,7 @@ public class Ticket {
     int num;
     int timeOfCreation;
 
+    // Ticket stores a time of creation and a random number
     public Ticket(Clock watch) {
         Random rand=new Random();
         timeOfCreation=watch.getTime();
