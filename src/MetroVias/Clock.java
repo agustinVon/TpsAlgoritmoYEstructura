@@ -9,6 +9,6 @@ public class Clock {
     }
 
     public void advanceTime(){
-        time=+30;
+        time=time+ 30;
     }
 }

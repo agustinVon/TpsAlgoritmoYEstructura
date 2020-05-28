@@ -1,6 +1,7 @@
 package MetroVias;
 
-import QueueDynamic.DynamicQueue;
+
+import MetroVias.QueueDynamic.DynamicQueue;
 
 import java.util.Random;
 

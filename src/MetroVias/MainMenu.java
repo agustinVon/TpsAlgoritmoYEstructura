@@ -44,6 +44,18 @@ public class MainMenu {
                     break;
                 case 2:
                     showStack(stationStack);
+                    System.out.println("Global information: ");
+                    System.out.println("Total people processed: "+ stationStack.getSize());
+                    System.out.println("Mean of global time: "+ globalTimeCounter.getMeanOfTime());
+                    System.out.println("Total earnings: "+globalFinances.getEarnings());
+                    System.out.println("Information of each window");
+                    for (int i = 0; i < amountOfWindows; i++) {
+                        System.out.println("\n");
+                        int toShow=i+1;
+                        System.out.println("Window number: "+ toShow);
+                        System.out.println("Mean of time: " + windows[i].getMeanTime());
+                        System.out.println("Earnings: "+windows[i].getEarnings());
+                    }
                     System.exit(0);
                     break;
                 case 3:
