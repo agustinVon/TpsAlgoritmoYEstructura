@@ -29,4 +29,7 @@ public class ColorNode<T> {
     public void changeColor(){
         color=!color;
     }
+    public boolean getColor(){
+        return color;
+    }
 }
