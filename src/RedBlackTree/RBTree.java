@@ -1,6 +1,6 @@
 package RedBlackTree;
 
-class RBTree
+public class RBTree
 {
     private RedBlackNode current;
     private RedBlackNode parent;
