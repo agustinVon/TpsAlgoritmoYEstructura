@@ -7,8 +7,8 @@ public class DoubleNode<T>{
 
     public DoubleNode (T element){
         this.root = element;
-        this.right = null;
-        this.left = null;
+        this.right = new DoubleNode<>();
+        this.left = new DoubleNode<>();
     }
     public DoubleNode(T element, DoubleNode<T> leftnode, DoubleNode<T> rightNode){
         this.root = element;

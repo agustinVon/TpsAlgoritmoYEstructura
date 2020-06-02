@@ -6,5 +6,6 @@ public class main {
         tp.randomRBTree();
 
         tp.randomBSTree();
+        tp.randomAVLTree();
     }
 }
