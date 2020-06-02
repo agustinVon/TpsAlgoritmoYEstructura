@@ -157,7 +157,7 @@ public class RBTree
         }
     }
     private int height(RedBlackNode node){
-        if(node.element==header.left.element) return 0;
+        if(node==nullNode) return 0;
         else return Math.max(height(node.left)+1,height(node.right)+1);
     }
 

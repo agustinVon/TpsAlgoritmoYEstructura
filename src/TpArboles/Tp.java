@@ -14,21 +14,20 @@ public class Tp {
     AVL avlTree;
     BinarySearchTree<Integer> bsTree;
     RBTree rbTree;
-    ArrayList<Integer> avlRandomNumbers, rbtRandomNumbers, bstRandomNumbers;
 
     public void randomAVLTree(){
         long startTime = System.currentTimeMillis();
         avlTree = new AVL(1 + new Random().nextInt(100001));
-        ArrayList<Integer> avlRandomNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
         for (int i = 0; i < 1000 ; i++) {
             int randomAdd = 1 + new Random().nextInt(100001);
-            while(avlRandomNumbers.contains(randomAdd)){
+            while(randomNumbers.contains(randomAdd)){
                 randomAdd = 1 + new Random().nextInt(100001);
             }
-            avlRandomNumbers.add(randomAdd);
+            randomNumbers.add(randomAdd);
         }
         for (int i = 0; i < 1000; i++) {
-            avlTree.insert(avlRandomNumbers.get(i));
+            avlTree.insert(randomNumbers.get(i));
         }
         long endTime = System.currentTimeMillis();
         long timeTaken = endTime - startTime;
@@ -39,16 +38,16 @@ public class Tp {
     public void randomRBTree(){
         long startTime = System.currentTimeMillis();
         rbTree = new RBTree(1 + new Random().nextInt(100001));
-        ArrayList<Integer> rbtRandomNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
         for (int i = 0; i < 1000 ; i++) {
             int randomAdd = 1 + new Random().nextInt(100001);
-            while(rbtRandomNumbers.contains(randomAdd)){
+            while(randomNumbers.contains(randomAdd)){
                 randomAdd = 1 + new Random().nextInt(100001);
             }
-            rbtRandomNumbers.add(randomAdd);
+            randomNumbers.add(randomAdd);
         }
         for (int i = 0; i < 1000; i++) {
-            rbTree.insert(rbtRandomNumbers.get(i));
+            rbTree.insert(randomNumbers.get(i));
         }
         long endTime = System.currentTimeMillis();
         long timeTaken = endTime - startTime;
@@ -59,16 +58,16 @@ public class Tp {
     public void randomBSTree(){
         long startTime = System.currentTimeMillis();
         bsTree = new BinarySearchTree(1 + new Random().nextInt(100001));
-        ArrayList<Integer> bstRandomNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
         for (int i = 0; i < 1000 ; i++) {
             int randomAdd = 1 + new Random().nextInt(100001);
-            while(bstRandomNumbers.contains(randomAdd)){
+            while(randomNumbers.contains(randomAdd)){
                 randomAdd = 1 + new Random().nextInt(100001);
             }
-            bstRandomNumbers.add(randomAdd);
+            randomNumbers.add(randomAdd);
         }
         for (int i = 0; i < 1000; i++) {
-            bsTree.insert(bstRandomNumbers.get(i));
+            bsTree.insert(randomNumbers.get(i));
         }
         long endTime = System.currentTimeMillis();
         long timeTaken = endTime - startTime;
@@ -76,17 +75,86 @@ public class Tp {
         System.out.println("Its height is:" + bsTree.getHeight());
     }
 
-    public void table(){
-        ArrayList<Integer> indexesToSearch = new ArrayList<Integer>();
-        for (int i = 0; i < 10 ; i++) {
-            indexesToSearch.add(i*10);
+    public void randomAVLTreeMean(){
+        long totalTime=0;
+        int totalLength=0;
+        for (int i = 0; i < 10; i++) {
+            long startTime = System.currentTimeMillis();
+            AVL avlTree = new AVL(1 + new Random().nextInt(100001));
+            ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
+            for (int j = 0; j < 1000 ; j++) {
+                int randomAdd = 1 + new Random().nextInt(100001);
+                while(randomNumbers.contains(randomAdd)){
+                    randomAdd = 1 + new Random().nextInt(100001);
+                }
+                randomNumbers.add(randomAdd);
+            }
+            for (int j = 0; j < 1000; j++) {
+                avlTree.insert(randomNumbers.get(j));
+            }
+            long endTime = System.currentTimeMillis();
+            long timeTaken = endTime - startTime;
+            totalTime=totalTime+timeTaken;
+            totalLength=totalLength+avlTree.getHeight();
         }
+        System.out.println("Mean of time and mean of height in AVL: ");
+        System.out.println(totalTime/10);
+        System.out.println(totalLength/10);
+    }
 
-        //AVL
-        String attempts =
-        for (int i = 0; i < 10 ; i++) {
-            indexesToSearch
+    public void randomRBTreeMean(){
+        double totalTime=0;
+        int totalLength=0;
+        for (int j = 0; j < 10; j++) {
+            long startTime = System.currentTimeMillis();
+            RBTree rbTree = new RBTree(1 + new Random().nextInt(100001));
+            ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
+            for (int i = 0; i < 1000 ; i++) {
+                int randomAdd = 1 + new Random().nextInt(100001);
+                while(randomNumbers.contains(randomAdd)){
+                    randomAdd = 1 + new Random().nextInt(100001);
+                }
+                randomNumbers.add(randomAdd);
+            }
+            for (int i = 0; i < 1000; i++) {
+                rbTree.insert(randomNumbers.get(i));
+            }
+            long endTime = System.currentTimeMillis();
+            long timeTaken = endTime - startTime;
+            totalTime=totalTime+timeTaken;
+            totalLength=totalLength+rbTree.height();
         }
+        System.out.println("Mean of time and mean of height in RBTree: ");
+        System.out.println(totalTime/10);
+        System.out.println(totalLength/10);
+    }
+
+    public void randomBSTreeMean(){
+        double totalTime=0;
+        int totalLength=0;
+        for (int j = 0; j < 10; j++) {
+            long startTime = System.currentTimeMillis();
+            BinarySearchTree bsTree = new BinarySearchTree(1 + new Random().nextInt(100001));
+            ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
+            for (int i = 0; i < 1000 ; i++) {
+                int randomAdd = 1 + new Random().nextInt(100001);
+                while(randomNumbers.contains(randomAdd)){
+                    randomAdd = 1 + new Random().nextInt(100001);
+                }
+                randomNumbers.add(randomAdd);
+            }
+            for (int i = 0; i < 1000; i++) {
+                bsTree.insert(randomNumbers.get(i));
+            }
+            long endTime = System.currentTimeMillis();
+            long timeTaken = endTime - startTime;
+            totalTime=totalTime+timeTaken;
+            totalLength=totalLength+bsTree.getHeight();
+        }
+        System.out.println("Mean of time and mean of height in RBTree: ");
+        System.out.println(totalTime/10);
+        System.out.println(totalLength/10);
 
     }
+
 }
