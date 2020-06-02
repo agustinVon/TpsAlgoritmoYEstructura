@@ -45,10 +45,6 @@ public class SearchBinaryTreeTest extends TestCase {
         SearchBinaryTree<Integer> searchTree2 = new SearchBinaryTree<Integer>(7,new SearchBinaryTree<Integer>(5, new SearchBinaryTree<Integer>(3), new SearchBinaryTree<Integer>(6) ),new SearchBinaryTree<Integer>(8, new SearchBinaryTree<Integer>(),new SearchBinaryTree<Integer>(28, new SearchBinaryTree<Integer>(), new SearchBinaryTree<Integer>(29))));
         searchTree2.insert(9);
         Assert.assertEquals(9, (int) searchTree2.rootNode.right.right.left.element);
-
-        SearchBinaryTree<Integer> searchTree3 = new SearchBinaryTree<Integer>();
-        searchTree3.insert(3);
-        Assert.assertEquals();
     }
 
     public void testDelete() {
