@@ -14,20 +14,21 @@ public class Tp {
     AVL avlTree;
     BinarySearchTree<Integer> bsTree;
     RBTree rbTree;
+    ArrayList<Integer> avlRandomNumbers, rbtRandomNumbers, bstRandomNumbers;
 
     public void randomAVLTree(){
         long startTime = System.currentTimeMillis();
         avlTree = new AVL(1 + new Random().nextInt(100001));
-        ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> avlRandomNumbers = new ArrayList<Integer>();
         for (int i = 0; i < 1000 ; i++) {
             int randomAdd = 1 + new Random().nextInt(100001);
-            while(randomNumbers.contains(randomAdd)){
+            while(avlRandomNumbers.contains(randomAdd)){
                 randomAdd = 1 + new Random().nextInt(100001);
             }
-            randomNumbers.add(randomAdd);
+            avlRandomNumbers.add(randomAdd);
         }
         for (int i = 0; i < 1000; i++) {
-            avlTree.insert(randomNumbers.get(i));
+            avlTree.insert(avlRandomNumbers.get(i));
         }
         long endTime = System.currentTimeMillis();
         long timeTaken = endTime - startTime;
@@ -38,16 +39,16 @@ public class Tp {
     public void randomRBTree(){
         long startTime = System.currentTimeMillis();
         rbTree = new RBTree(1 + new Random().nextInt(100001));
-        ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> rbtRandomNumbers = new ArrayList<Integer>();
         for (int i = 0; i < 1000 ; i++) {
             int randomAdd = 1 + new Random().nextInt(100001);
-            while(randomNumbers.contains(randomAdd)){
+            while(rbtRandomNumbers.contains(randomAdd)){
                 randomAdd = 1 + new Random().nextInt(100001);
             }
-            randomNumbers.add(randomAdd);
+            rbtRandomNumbers.add(randomAdd);
         }
         for (int i = 0; i < 1000; i++) {
-            rbTree.insert(randomNumbers.get(i));
+            rbTree.insert(rbtRandomNumbers.get(i));
         }
         long endTime = System.currentTimeMillis();
         long timeTaken = endTime - startTime;
@@ -58,20 +59,34 @@ public class Tp {
     public void randomBSTree(){
         long startTime = System.currentTimeMillis();
         bsTree = new BinarySearchTree(1 + new Random().nextInt(100001));
-        ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> bstRandomNumbers = new ArrayList<Integer>();
         for (int i = 0; i < 1000 ; i++) {
             int randomAdd = 1 + new Random().nextInt(100001);
-            while(randomNumbers.contains(randomAdd)){
+            while(bstRandomNumbers.contains(randomAdd)){
                 randomAdd = 1 + new Random().nextInt(100001);
             }
-            randomNumbers.add(randomAdd);
+            bstRandomNumbers.add(randomAdd);
         }
         for (int i = 0; i < 1000; i++) {
-            bsTree.insert(randomNumbers.get(i));
+            bsTree.insert(bstRandomNumbers.get(i));
         }
         long endTime = System.currentTimeMillis();
         long timeTaken = endTime - startTime;
         System.out.println("Time taken to build Binary Search Tree: " + timeTaken);
         System.out.println("Its height is:" + bsTree.getHeight());
+    }
+
+    public void table(){
+        ArrayList<Integer> indexesToSearch = new ArrayList<Integer>();
+        for (int i = 0; i < 10 ; i++) {
+            indexesToSearch.add(i*10);
+        }
+
+        //AVL
+        String attempts =
+        for (int i = 0; i < 10 ; i++) {
+            indexesToSearch
+        }
+
     }
 }
