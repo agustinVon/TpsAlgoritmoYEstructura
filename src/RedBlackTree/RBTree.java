@@ -8,6 +8,7 @@ class RBTree
     private RedBlackNode great;
     private RedBlackNode header;
     private static RedBlackNode nullNode;
+    private int nullValue;
 
     static
     {
@@ -25,6 +26,7 @@ class RBTree
         header = new RedBlackNode(negInf);
         header.left = nullNode;
         header.right = nullNode;
+        nullValue=negInf;
     }
 
     public boolean isEmpty()
@@ -144,6 +146,19 @@ class RBTree
             found = search(r, val);
         }
         return found;
+    }
+
+
+    public int height(){
+        if(isEmpty()) return 0;
+        else{
+            RedBlackNode aux=header.right;
+            return height(header.right);
+        }
+    }
+    private int height(RedBlackNode node){
+        if(node.element==header.left.element) return 0;
+        else return Math.max(height(node.left)+1,height(node.right)+1);
     }
 
 }
