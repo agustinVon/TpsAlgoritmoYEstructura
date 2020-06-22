@@ -10,5 +10,11 @@ public class UI {
     private String destinyRecordFile="C:\\Users\\User\\Documents\\TpsAlgoritmoYEstructura\\src\\TpArchivos\\Files\\destinyRecordFile";
     private String valueRecordFile="C:\\Users\\User\\Documents\\TpsAlgoritmoYEstructura\\src\\TpArchivos\\Files\\valueRecordFile";
 
+    public static void main(String[] args) {
+
+    }
+
+
+
 
 }
