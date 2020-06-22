@@ -4,22 +4,18 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class DestinationRecord {
-    File destinationFile;
-    FileOutputStream destinationFOS;
-    ObjectOutputStream destinationOOS;
-    FileInputStream destinationFIS;
-    ObjectInputStream destinationOIS;
-    int fileSize, registerSize;
+    private File destinationFile;
+    private ArrayList<Destination> destinations;
 
     public DestinationRecord(String directory){
         try {
             destinationFile = new File(directory);
-            destinationFOS = new FileOutputStream(destinationFile);
-            destinationOOS = new ObjectOutputStream(destinationFOS);
-            destinationFIS = new FileInputStream(destinationFile);
-            destinationOIS = new ObjectInputStream(destinationFIS);
-            registerSize = 23;
-            fileSize = 0;
+            if(destinationFile.exists()){
+                recover();
+            }
+            else{
+                destinations = new ArrayList<Destination>();
+            }
         }
         catch (Exception exception){
             System.out.println(exception.getMessage());
@@ -28,20 +24,41 @@ public class DestinationRecord {
 
     public void write(Destination destination){
         try {
-            destinationOOS.writeObject(destination.getDestinationCode());
-            destinationOOS.writeObject(destination.getDescription());
+            destinations.add(destination);
+            FileOutputStream destinationFOS = new FileOutputStream(destinationFile);
+            ObjectOutputStream destinationOOS = new ObjectOutputStream(destinationFOS);
+            destinationOOS.writeObject(destinations);
+        }
+        catch(Exception exception){
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    public ArrayList<Destination> getAllDestinations(){
+        return destinations;
+    }
+
+    public Destination search(String code) throws Exception {
+        for (int i = 0; i < destinations.size(); i++) {
+            if(destinations.get(i).getCode().equals(code)){
+                return destinations.get(i);
+            }
+        }
+        throw new Exception("Destination not found");
+    }
+
+    public void remove(){
+        //TODO
+    }
+
+    private void recover() {
+        try {
+            FileInputStream destinationsFIS = new FileInputStream(destinationFile);
+            ObjectInputStream destinationsOIS = new ObjectInputStream(destinationsFIS);
+            destinations = (ArrayList<Destination>) destinationsOIS.readObject();
         }
         catch (Exception exception){
             System.out.println(exception.getMessage());
         }
-        fileSize++;
-    }
-
-    public Destination read() throws Exception{
-        return new Destination((String) destinationOIS.readObject(), (String) destinationOIS.readObject());
-    }
-
-    public void remove(){
-
     }
 }

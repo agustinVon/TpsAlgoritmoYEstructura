@@ -2,50 +2,51 @@ package TpArchivos;
 
 public class Destination {
 
-    private String destinationCode;
+    private String code;
     private String description;
 
-    public Destination(String destinationCode, String description) {
-        this.destinationCode = destinationCode;
+    public Destination(String code, String description) {
+        this.code = code;
         this.description = description;
+        checkCode();
+        checkUtility();
     }
 
-    public String getDestinationCode() {
-        destinationCodeUtility();
-        return destinationCode;
+    public String getCode() {
+        return code;
     }
 
     public String getDescription() {
-        descriptionUtility();
         return description;
     }
 
-    private void destinationCodeUtility(){
+    private void checkCode(){
         String checkedCode = "";
-        if(destinationCode.length()>3){
+        if(code.length()>3){
             for (int i = 0; i < 3; i++) {
-                checkedCode += destinationCode.charAt(i);
+                checkedCode += code.charAt(i);
             }
         }
         else{
-            for (int i = destinationCode.length(); i < 3; i++) {
+            for (int i = code.length(); i < 3; i++) {
                 checkedCode += " ";
             }
         }
-        destinationCode = checkedCode;
+        code = checkedCode;
     }
 
-    private void descriptionUtility(){
+    private void checkUtility(){
         String checkedDescription = "";
-        if(description.length()>20){
-            for (int i = 0; i < 100; i++) {
+        if(description.length()>30){
+            for (int i = 0; i < 30; i++) {
                 checkedDescription += description.charAt(i);
             }
         }
         else{
-            for (int i = description.length(); i < 20; i++) {
+            for (int i = description.length(); i < 30; i++) {
                 checkedDescription += " ";
             }
         }
+        description = checkedDescription;
     }
 }
