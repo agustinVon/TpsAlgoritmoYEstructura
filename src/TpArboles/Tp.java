@@ -157,4 +157,22 @@ public class Tp {
 
     }
 
+    public void tabla(){
+        avlTree = new AVL(1 + new Random().nextInt(100001));
+        ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
+        for (int i = 0; i < 1000 ; i++) {
+            int randomAdd = 1 + new Random().nextInt(100001);
+            while(randomNumbers.contains(randomAdd)){
+                randomAdd = 1 + new Random().nextInt(100001);
+            }
+            randomNumbers.add(randomAdd);
+        }
+        for (int number:randomNumbers) {
+            avlTree.insert(number);
+        }
+        for (int number:randomNumbers) {
+            System.out.println(avlTree.existCounter(number));
+        }
+    }
+
 }

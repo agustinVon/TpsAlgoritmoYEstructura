@@ -157,6 +157,36 @@ public class AVL<T> implements ISearchTree<T> {
         return false;
     }
 
+    public int existCounter(T element){
+        return existCounter(element,0);
+    }
+
+    public int existCounter(T element,int i){
+        try {
+            return existAuxiliarCounter(element, (Comparable<T>) element,i);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    public int existAuxiliarCounter(T element, Comparable<T> tComparable,int i) throws IOException {
+        if(tComparable.compareTo(this.getRoot()) == 0){
+            return i;
+        }else if(tComparable.compareTo(this.getRoot())>0){
+            if(root.getRight() != null){
+                i=i+1;
+                return getRight().existCounter(element,i);
+            }
+        }else if(tComparable.compareTo(this.getRoot())<0){
+            if(root.getLeft() != null){
+                i=i+1;
+                return getLeft().existCounter(element,i);
+            }
+        }
+        return i;
+    }
+
     public DoubleNode<T> getMax(ISearchTree<T> tree) {
         Comparable<T> node = (Comparable<T>) this.root.getRoot();
         ISearchTree<T> rightNode = this.getRight();
