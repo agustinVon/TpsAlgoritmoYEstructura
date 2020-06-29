@@ -19,5 +19,33 @@ public class SalesRecord {
     public void write(Sale sale) throws IOException {
         raf.writeUTF(sale.getDestinyCode());
         raf.writeUTF(sale.getArticleCode());
+        raf.writeInt(sale.getCuantity());
+        raf.writeDouble(sale.getPriceInDolars());
+        raf.writeInt(sale.getDay());
+        raf.writeInt(sale.getMonth());
+    }
+
+    public void close() throws IOException {
+        raf.close();
+    }
+
+    public void start() throws IOException {
+        raf.seek(0);
+    }
+
+    public void end() throws IOException {
+        raf.seek(raf.length());
+    }
+
+    public long cantReg() throws IOException {
+        return raf.length()/sizeReg;
+    }
+
+    public Sale read() throws IOException {
+        try {
+            return new Sale(raf.readUTF(),raf.readUTF(),raf.readInt(),raf.readDouble(),new Date(raf.readInt(),raf.readInt()));
+        } catch (WrongSize wrongSize) {
+            throw new RuntimeException("Corrupted Files");
+        }
     }
 }

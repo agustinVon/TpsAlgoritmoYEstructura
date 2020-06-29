@@ -7,9 +7,9 @@ public class Sale {
     double priceInDolars;
     Date dateOfSale;
 
-    public Sale(String destinyCode, String articleCode, int cuantity, double priceInDolars, Date dateOfSale) {
+    public Sale(String destinyCode, String articleCode, int cuantity, double priceInDolars, Date dateOfSale) throws WrongSize {
         if(destinyCode.length()>3){
-            throw new RuntimeException("Code too big");
+            throw new WrongSize();
         }
         for (int i = destinyCode.length(); i < 3; i++) {
             destinyCode=destinyCode+" ";
@@ -17,7 +17,7 @@ public class Sale {
         this.destinyCode = destinyCode;
 
         if(articleCode.length()>4){
-            throw new RuntimeException("Code too big");
+            throw new WrongSize();
         }
         for (int i = articleCode.length(); i < 4; i++) {
             articleCode=articleCode+" ";
