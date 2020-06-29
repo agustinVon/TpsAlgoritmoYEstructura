@@ -26,11 +26,20 @@ public class ExchangeRateRecord {
     public void write(ExchangeRate exchangeRate){
         try {
             exchangeRates.add(exchangeRate);
+            write(exchangeRates);
+        }
+        catch(Exception exception){
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    private void write(ArrayList<ExchangeRate> exchangeRates){
+        try {
             FileOutputStream exchangeRateFOS = new FileOutputStream(exchangeRateFile);
             ObjectOutputStream exchangeRateOOS = new ObjectOutputStream(exchangeRateFOS);
             exchangeRateOOS.writeObject(exchangeRates);
         }
-        catch(Exception exception){
+        catch (Exception exception){
             System.out.println(exception.getMessage());
         }
     }
@@ -46,6 +55,14 @@ public class ExchangeRateRecord {
             }
         }
         throw new Exception("Exchange rate not found");
+    }
+
+    public void remove(int month){
+        //TODO
+    }
+
+    public int size(){
+        return exchangeRates.size();
     }
 
     private void recover(){

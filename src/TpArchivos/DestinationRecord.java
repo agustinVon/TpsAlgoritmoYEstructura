@@ -25,11 +25,20 @@ public class DestinationRecord {
     public void write(Destination destination){
         try {
             destinations.add(destination);
+            write(destinations);
+        }
+        catch(Exception exception){
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    private void write(ArrayList<Destination> destinations){
+        try {
             FileOutputStream destinationFOS = new FileOutputStream(destinationFile);
             ObjectOutputStream destinationOOS = new ObjectOutputStream(destinationFOS);
             destinationOOS.writeObject(destinations);
         }
-        catch(Exception exception){
+        catch (Exception exception){
             System.out.println(exception.getMessage());
         }
     }
@@ -47,8 +56,24 @@ public class DestinationRecord {
         throw new Exception("Destination not found");
     }
 
-    public void remove(){
+    public void remove(int code){
         //TODO
+    }
+
+    public int size(){
+        return destinations.size();
+    }
+
+    public boolean modify(String code, String newDescription){
+        Destination modifyDestination = new Destination(code, newDescription);
+        for (int i = 0; i < destinations.size(); i++) {
+            if(destinations.get(i).getCode() == code){
+                destinations.set(i, modifyDestination);
+                write(destinations);
+                return true;
+            }
+        }
+        return false;
     }
 
     private void recover() {
