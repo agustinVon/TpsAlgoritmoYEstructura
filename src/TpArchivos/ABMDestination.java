@@ -12,14 +12,12 @@ public class ABMDestination {
     }
 
     public void alta(String code){
-        try {
-            System.out.println("Enter description of destination: ");
-            String description = myScanner.nextLine();
-            destinationRecord.write(new Destination(code, description));
-            System.out.println("Destination added successfully");
-        } catch (Exception exception) {
-            System.out.println(exception.getMessage());
-        }
+
+        System.out.println("Enter description of destination: ");
+        String description = myScanner.nextLine();
+        destinationRecord.write(new Destination(code, description));
+        System.out.println("Destination added successfully");
+
     }
 
     public void baja(){

@@ -2,7 +2,7 @@ package TpArchivos;
 
 import java.io.Serializable;
 
-public class Destination extends Object {
+public class Destination implements Serializable {
 
     private String code;
     private String description;

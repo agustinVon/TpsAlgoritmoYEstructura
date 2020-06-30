@@ -2,14 +2,15 @@ package TpArchivos;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI {
 
     public static void main(String[] args){
-        String sellsRecordFile="C:\\Ingeniería\\Programacion\\Algoritmos y Est. de Datos\\Java\\archivostestin\\salesrecordfile";
-        String destinyRecordFile="C:\\Ingeniería\\Programacion\\Algoritmos y Est. de Datos\\Java\\archivostestin\\destinyrecordfile";
-        String valueRecordFile="C:\\Ingeniería\\Programacion\\Algoritmos y Est. de Datos\\Java\\archivostestin\\valuerecordfile";
+        String sellsRecordFile="C:\\Users\\User\\Documents\\TpsAlgoritmoYEstructura\\src\\TpArchivos\\Files\\salesrecordfile";
+        String destinyRecordFile="C:\\Users\\User\\Documents\\TpsAlgoritmoYEstructura\\src\\TpArchivos\\Files\\destinyrecordfile";
+        String valueRecordFile="C:\\Users\\User\\Documents\\TpsAlgoritmoYEstructura\\src\\TpArchivos\\Files\\valuerecordfile";
 
         AbmSales sales=new AbmSales(sellsRecordFile);
         ABMDestination destiny=new ABMDestination(destinyRecordFile);
@@ -58,12 +59,17 @@ public class UI {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    destinyArr=destiny.getArrOfDestinations();
+                    ArrayList<String> destinys=new ArrayList<>();
+                    for (int i = 0; i < salesArr.length; i++) {
+                        if(!destinys.contains(salesArr[i].getDestinyCode())){
+                            destinys.add(salesArr[i].getDestinyCode());
+                        }
+                    }
                     exchangeRateArr=exchangeRate.obtainArrOfExchangeRates();
-                    for (int i = 0; i < destinyArr.length; i++) {
-                        String currentDestination=destinyArr[i].getCode();
+
+                    for (String destinyCurrent:destinys) {
                         for (int j = 0; j < salesArr.length; j++) {
-                            if(salesArr[j].getDestinyCode().equals(currentDestination)){
+                            if(salesArr[j].getDestinyCode().equals(destinyCurrent)){
                                 double price= salesArr[j].getPriceInDolars() * exchangeRateArr[salesArr[j].getMonth()-1].getDollarValue(); //lina obtiene precio del producto en pesos
                                 //obtiene valor en dolar de producto y se fija el valor en pesos de la lista de cotizaciones
                                 //sabemos que el valor de cotizacion del dolar esta en la posicion getMonth-1 porque el archivo de cotizacion
