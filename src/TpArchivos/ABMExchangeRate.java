@@ -5,21 +5,24 @@ import java.util.Scanner;
 public class ABMExchangeRate {
 
     private ExchangeRateRecord exchangeRateRecord;
-    private Scanner myScanner;
+    private Scanner myScanner=new Scanner(System.in);
+    private int lastMonthAdded=0;
 
     public ABMExchangeRate(String directory){
         exchangeRateRecord = new ExchangeRateRecord(directory);
     }
 
-    public void alta() {
+    public void alta() throws YearHasFinishedExeption {
         try {
             System.out.println("Add new exchange rate: ");
             System.out.println();
-            System.out.println("Enter month: ");
-            int month = myScanner.nextInt();
             System.out.println("Enter dollar value: ");
             double dollarValue = myScanner.nextDouble();
-            exchangeRateRecord.write(new ExchangeRate(month, dollarValue));
+            lastMonthAdded=lastMonthAdded+1;
+            if(lastMonthAdded>12){
+                throw new YearHasFinishedExeption();
+            }
+            exchangeRateRecord.write(new ExchangeRate(lastMonthAdded, dollarValue));
             System.out.println("Destination added successfully");
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -38,6 +41,10 @@ public class ABMExchangeRate {
             exchangeRates[i] = exchangeRateRecord.getAllExchangeRates().get(i);
         }
         return exchangeRates;
+    }
+
+    public void resetYear(){
+        //TODO
     }
 
 }

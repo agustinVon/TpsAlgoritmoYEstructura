@@ -5,19 +5,15 @@ import java.util.Scanner;
 public class ABMDestination {
 
     private DestinationRecord destinationRecord;
-    private Scanner myScanner;
+    private Scanner myScanner=new Scanner(System.in);
 
     public ABMDestination(String directory){
         destinationRecord = new DestinationRecord(directory);
     }
 
-    public void alta(){
+    public void alta(String code){
         try {
-            System.out.println("Add new destination: ");
-            System.out.println();
-            System.out.println("Enter destination code: ");
-            String code = myScanner.nextLine();
-            System.out.println("Enter description: ");
+            System.out.println("Enter description of destination: ");
             String description = myScanner.nextLine();
             destinationRecord.write(new Destination(code, description));
             System.out.println("Destination added successfully");

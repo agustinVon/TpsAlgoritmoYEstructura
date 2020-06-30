@@ -14,7 +14,7 @@ public class DestinationRecord {
                 recover();
             }
             else{
-                destinations = new ArrayList<Destination>();
+                destinations = new ArrayList<>();
             }
         }
         catch (Exception exception){

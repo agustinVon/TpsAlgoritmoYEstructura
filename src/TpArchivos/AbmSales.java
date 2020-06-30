@@ -12,41 +12,47 @@ public class AbmSales {
         this.file = file;
     }
 
-    public void alta() throws IOException {
-        SalesRecord salesRecord=new SalesRecord(file);
+    public void alta(String destiny) throws WrongSize {
+        SalesRecord salesRecord= null;
+        try {
+            salesRecord = new SalesRecord(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            salesRecord.end();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Scanner scn= new Scanner(System.in);
         System.out.println("Add new sale: ");
-        boolean inputIsCorrect=false;
         int quantity;
         double price;
         int day;
         int month;
-        String destiny = "";
         String description="";
-        while(!inputIsCorrect){
-            System.out.println("Quantity: ");
-            quantity=scn.nextInt();
-            System.out.println("\nDate: ");
-            System.out.println("Day: ");
-            day=scn.nextInt();
-            System.out.println("Month: ");
-            month=scn.nextInt();
-            System.out.println("\nPrice: ");
-            price=scn.nextDouble();
-            System.out.println("Code from destiny: ");
-            scn.next();
-            System.out.println("Description of product: ");
-            scn.next();
-
-            try {
-                salesRecord.write(new Sale(destiny,description,quantity,price,new Date(day,month)));
-                inputIsCorrect=true;
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (WrongSize wrongSize) {
-            }
+        System.out.println("Quantity: ");
+        quantity=scn.nextInt();
+        System.out.println("\nDate: ");
+        System.out.println("Day: ");
+        day=scn.nextInt();
+        System.out.println("Month: ");
+        month=scn.nextInt();
+        System.out.println("\nPrice: ");
+        price=scn.nextDouble();
+        System.out.println("Description of product: ");
+        description=scn.next();
+        try {
+            salesRecord.write(new Sale(destiny,description,quantity,price,new Date(day,month)));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        salesRecord.close();
+
+        try {
+            salesRecord.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Sale[] obtainArrOfSales() throws IOException {
