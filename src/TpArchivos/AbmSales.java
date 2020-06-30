@@ -33,14 +33,14 @@ public class AbmSales {
         String description="";
         System.out.println("Quantity: ");
         quantity=scn.nextInt();
-        System.out.println("\nDate: ");
+        System.out.println("Date: ");
         System.out.println("Day: ");
         day=scn.nextInt();
         System.out.println("Month: ");
         month=scn.nextInt();
         System.out.println("\nPrice: ");
         price=scn.nextDouble();
-        System.out.println("Description of product: ");
+        System.out.println("Product code: ");
         description=scn.next();
         try {
             salesRecord.write(new Sale(destiny,description,quantity,price,new Date(day,month)));

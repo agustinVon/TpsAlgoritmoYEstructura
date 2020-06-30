@@ -1,6 +1,8 @@
 package TpArchivos;
 
-public class Destination {
+import java.io.Serializable;
+
+public class Destination extends Object {
 
     private String code;
     private String description;

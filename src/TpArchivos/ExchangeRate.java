@@ -1,6 +1,8 @@
 package TpArchivos;
 
-public class ExchangeRate {
+import java.io.Serializable;
+
+public class ExchangeRate extends Object {
     private int month;
     private double dollarValue;
 

@@ -7,9 +7,9 @@ import java.util.Scanner;
 public class UI {
 
     public static void main(String[] args){
-        String sellsRecordFile="C:\\Users\\User\\Documents\\TpsAlgoritmoYEstructura\\src\\TpArchivos\\Files\\sellsRecord";
-        String destinyRecordFile="C:\\Users\\User\\Documents\\TpsAlgoritmoYEstructura\\src\\TpArchivos\\Files\\destinyRecordFile";
-        String valueRecordFile="C:\\Users\\User\\Documents\\TpsAlgoritmoYEstructura\\src\\TpArchivos\\Files\\valueRecordFile";
+        String sellsRecordFile="C:\\Ingeniería\\Programacion\\Algoritmos y Est. de Datos\\Java\\archivostestin\\salesrecordfile";
+        String destinyRecordFile="C:\\Ingeniería\\Programacion\\Algoritmos y Est. de Datos\\Java\\archivostestin\\destinyrecordfile";
+        String valueRecordFile="C:\\Ingeniería\\Programacion\\Algoritmos y Est. de Datos\\Java\\archivostestin\\valuerecordfile";
 
         AbmSales sales=new AbmSales(sellsRecordFile);
         ABMDestination destiny=new ABMDestination(destinyRecordFile);
@@ -24,14 +24,24 @@ public class UI {
             switch (menu(scn)){
                 case 1:
                     boolean inputIsIncorrect=true;
-                    while(inputIsIncorrect){
-                        System.out.println("Select destination code: ");
-                        String destination= scn.next();
+                    while(inputIsIncorrect) {
+                        System.out.println("Enter destination code: ");
+                        String destination = scn.next();
                         try {
-                            sales.alta(destination);
-                            destiny.alta(destination);
-                            inputIsIncorrect=false;
-                        } catch (WrongSize wrongSize) {
+                            if(!destiny.contains(destination)){
+                                destiny.alta(destination);
+                                sales.alta(destination);
+                                inputIsIncorrect = false;
+                            }
+                            else{
+                                System.out.println("Add to existing destination: ");
+                                sales.alta(destination);
+                                inputIsIncorrect = false;
+                            }
+
+                        }
+                        catch(WrongSize | Exception exception){
+                            System.out.println(exception.getMessage());
                         }
                     }
                     break;

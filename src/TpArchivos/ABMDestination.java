@@ -45,6 +45,10 @@ public class ABMDestination {
         }
     }
 
+    public boolean contains(String code) throws Exception {
+        return destinationRecord.contains(code);
+    }
+
     public Destination[] getArrOfDestinations(){
         Destination[] destinations = new Destination[destinationRecord.size()];
         for (int i = 0; i < destinationRecord.size(); i++) {

@@ -8,13 +8,14 @@ public class DestinationRecord {
     private ArrayList<Destination> destinations;
 
     public DestinationRecord(String directory){
+        destinations = new ArrayList<Destination>();
         try {
             destinationFile = new File(directory);
             if(destinationFile.exists()){
                 recover();
             }
             else{
-                destinations = new ArrayList<>();
+                destinations = new ArrayList<Destination>();
             }
         }
         catch (Exception exception){
@@ -47,13 +48,13 @@ public class DestinationRecord {
         return destinations;
     }
 
-    public Destination search(String code) throws Exception {
+    public boolean contains(String code) throws Exception {
         for (int i = 0; i < destinations.size(); i++) {
             if(destinations.get(i).getCode().equals(code)){
-                return destinations.get(i);
+                return true;
             }
         }
-        throw new Exception("Destination not found");
+        return false;
     }
 
     public void remove(int code){
